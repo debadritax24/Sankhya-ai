@@ -20,6 +20,20 @@
 | Icons | lucide-react | Installed |
 | Package Manager | npm | Active |
 
+### Backend
+| Component | Technology | Status |
+|-----------|-----------|--------|
+| Framework | FastAPI 0.141.1 | Installed |
+| Language | Python 3.14 | Installed |
+| ORM | SQLAlchemy 2.x (async) | Installed |
+| Database Driver | asyncpg | Installed |
+| Migrations | Alembic | Installed |
+| Cache | Redis (async) | Installed |
+| Auth | Clerk JWT verification | Implemented |
+| AI | OpenAI API (ready) | Installed |
+| Vector DB | PostgreSQL + pgvector | Ready |
+| Object Storage | boto3 (S3-compatible) | Installed |
+
 ---
 
 ## Completed Work
@@ -93,6 +107,95 @@
 - Success/Status: Green (#138808)
 - Text: Dark charcoal (#1a1a1a)
 - Structure: Neutral gray palette
+
+---
+
+## Backend Architecture
+
+### Project Structure
+```
+backend/
+├── app/
+│   ├── main.py                    # FastAPI app, startup/shutdown, health
+│   ├── core/
+│   │   ├── config.py              # Pydantic settings (env vars)
+│   │   ├── database.py            # SQLAlchemy async engine + session
+│   │   ├── redis.py               # Redis async client + cache helpers
+│   │   ├── security.py            # Clerk JWT verification + RBAC
+│   │   ├── enums.py               # UserRole, CompetencyLevel, etc.
+│   │   ├── logging.py             # Structured logging (structlog)
+│   │   └── logging_middleware.py   # Request ID + timing middleware
+│   ├── models/                    # SQLAlchemy ORM models (27 tables)
+│   ├── schemas/                   # Pydantic v2 request/response models
+│   ├── api/v1/                    # FastAPI routers (13 files)
+│   ├── services/                  # Business logic layer (11 services)
+│   ├── ai/                        # AI/RAG components (ready for implementation)
+│   └── integrations/              # iGOT/TPAC adapters (ready for implementation)
+├── migrations/                    # Alembic migrations
+├── tests/                         # Pytest tests
+├── seed.py                        # Idempotent seed data
+├── run_migration.py               # Direct migration runner
+└── requirements.txt               # Python dependencies
+```
+
+### Database Tables (27)
+users, departments, organizations, competency_domains, competencies, skills, role_competencies, user_competencies, competency_evidence, skill_gaps, courses, course_skills, learning_progress, recommendations, learning_paths, assessments, assessment_questions, assessment_attempts, assessment_answers, notifications, ai_conversations, ai_messages, documents, document_chunks, embeddings, audit_logs, training_programmes
+
+### API Endpoints (30)
+| Method | Endpoint | Auth |
+|--------|----------|------|
+| GET | /health | Public |
+| GET | /health/ready | Public |
+| GET | /api/v1/users/me | Learner |
+| GET | /api/v1/users/{user_id} | Learner |
+| GET | /api/v1/competencies | Public |
+| GET | /api/v1/competencies/{id} | Public |
+| GET | /api/v1/competencies/{id}/skills | Public |
+| GET | /api/v1/competencies/me/competencies | Learner |
+| PUT | /api/v1/competencies/me/competencies/{id} | Learner |
+| GET | /api/v1/skill-gaps | Learner |
+| GET | /api/v1/skill-gaps/{skill_id} | Learner |
+| GET | /api/v1/courses | Public |
+| GET | /api/v1/courses/{course_id} | Public |
+| GET | /api/v1/learning/progress | Learner |
+| PUT | /api/v1/learning/progress/{course_id} | Learner |
+| GET | /api/v1/assessments | Learner |
+| GET | /api/v1/assessments/{id} | Learner |
+| POST | /api/v1/assessments/{id}/attempt | Learner |
+| POST | /api/v1/assessments/{id}/submit | Learner |
+| GET | /api/v1/assessments/results/{attempt_id} | Learner |
+| GET | /api/v1/recommendations | Learner |
+| POST | /api/v1/documents/upload | Trainer |
+| GET | /api/v1/documents/{id} | Trainer |
+| POST | /api/v1/ai-tutor/conversations | Learner |
+| GET | /api/v1/ai-tutor/conversations/{id} | Learner |
+| POST | /api/v1/ai-tutor/conversations/{id}/messages | Learner |
+| GET | /api/v1/analytics/learner | Learner |
+| GET | /api/v1/analytics/admin | Admin |
+| GET | /api/v1/notifications | Learner |
+| PUT | /api/v1/notifications/{id}/read | Learner |
+
+### Services (11)
+- UserService — CRUD, Clerk mapping
+- CompetencyService — domains, skills, user levels, summary
+- SkillGapService — gap calculation from role vs actual
+- CourseService — catalog, search
+- LearningService — progress tracking
+- AssessmentService — attempts, grading, competency updates
+- RecommendationService — weighted ranking (cached)
+- TutorService — conversation management
+- AnalyticsService — learner + admin analytics
+- DocumentService — upload, status tracking
+- RecommendationService — deterministic ranking engine
+
+### Backend Commands
+```bash
+cd backend
+source venv/bin/activate
+python run_migration.py     # Create tables on Neon
+python seed.py              # Populate seed data
+uvicorn app.main:app --reload --host 0.0.0.0 --port 8000  # Start server
+```
 
 ---
 
@@ -278,7 +381,17 @@
 
 ## Pending Work
 
-### Immediate (Next Tasks)
+### Immediate — Backend
+- [ ] Run `python run_migration.py` against Neon to create tables
+- [ ] Run `python seed.py` to populate competency domains, skills, courses
+- [ ] Create Clerk middleware for backend JWT verification (needs real keys)
+- [ ] Implement AI infrastructure (document processing, embeddings, RAG)
+- [ ] Implement iGOT/TPAC integration adapters
+- [ ] Add Redis caching to analytics and recommendation endpoints
+- [ ] Add background job system for document processing
+- [ ] Write tests for authentication, authorization, core services
+
+### Immediate — Frontend
 - [ ] Add Clerk middleware for route protection (`src/middleware.ts`)
 - [ ] Add missing routes: `/learning/recommended`, `/learning/igot`, `/learning/tpac`
 - [ ] Add `/assessments/[assessmentId]` (pre-attempt summary page)
@@ -312,7 +425,12 @@
 | Issue | Status | Impact |
 |-------|--------|--------|
 | Clerk placeholder keys | Needs real keys | Auth won't work until keys provided |
-| No Clerk middleware | Not yet configured | Routes not protected |
+| No Clerk middleware (frontend) | Not yet configured | Frontend routes not protected |
+| No Clerk middleware (backend) | JWT verification ready, needs real keys | Backend auth endpoints return 401 |
+| Neon DATABASE_URL | Configured in .env | Tables not yet created (run `python run_migration.py`) |
+| Redis not running locally | Cache fallback (graceful) | Recommendations/analytics uncached |
+| AI/ML not implemented | Services stubbed | RAG, MCQ generation, tutor responses are placeholder |
+| iGOT/TPAC not integrated | Adapters ready | External course data is mock |
 | `colorText` in Clerk Variables | Removed (not in type) | Minor theming limitation |
 
 ---
@@ -333,4 +451,4 @@
 
 ---
 
-*Last updated: 2026-09-11*
+*Last updated: 2026-09-11 (Backend Phase 1-6 complete)*
