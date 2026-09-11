@@ -2,10 +2,9 @@ import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { getCourses } from "@/lib/data";
+import { courses } from "@/lib/constants/mock-data";
 
-export default async function AdminLearningPage() {
-  const courses = await getCourses();
+export default function AdminLearningPage() {
   return (
     <AppLayout breadcrumbs={[{ label: "Admin", href: "/admin" }, { label: "Learning" }]} role="admin">
       <PageHeader title="Training & Learning Analytics" description="Organization-wide learning engagement and effectiveness" />

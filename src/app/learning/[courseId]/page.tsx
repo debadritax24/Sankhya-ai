@@ -3,11 +3,10 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { getCourses } from "@/lib/data";
+import { courses } from "@/lib/constants/mock-data";
 import { notFound } from "next/navigation";
 
 export default async function CourseDetailPage({ params }: { params: Promise<{ courseId: string }> }) {
-  const courses = await getCourses();
   const { courseId } = await params;
   const course = courses.find((c) => c.id === courseId);
   if (!course) return notFound();

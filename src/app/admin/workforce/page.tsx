@@ -3,10 +3,9 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { getDepartments } from "@/lib/data";
+import { departments } from "@/lib/constants/mock-data";
 
-export default async function AdminWorkforcePage() {
-  const departments = await getDepartments();
+export default function AdminWorkforcePage() {
   return (
     <AppLayout breadcrumbs={[{ label: "Admin", href: "/admin" }, { label: "Workforce" }]} role="admin">
       <PageHeader title="Workforce Overview" description="Officials across departments and their competency status" />

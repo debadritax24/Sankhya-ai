@@ -1,7 +1,8 @@
-import { getCourses } from "@/lib/data";
+"use client";
+
+import { courses } from "@/lib/constants/mock-data";
 import { LearningClient } from "./client";
 
-export default async function LearningPage() {
-  const courses = await getCourses();
+export default function LearningPage() {
   return <LearningClient courses={courses} />;
 }

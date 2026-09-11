@@ -3,11 +3,9 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { getSkillGaps, getCompetencyDomainSummaries } from "@/lib/data";
+import { skillGaps, competencyDomainSummaries } from "@/lib/constants/mock-data";
 
-export default async function CareerPathPage() {
-  const skillGaps = await getSkillGaps();
-  const competencyDomainSummaries = await getCompetencyDomainSummaries();
+export default function CareerPathPage() {
 
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Career Path" }]}>

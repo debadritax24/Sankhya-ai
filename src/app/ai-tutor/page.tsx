@@ -1,7 +1,8 @@
-import { getConversations } from "@/lib/data";
+"use client";
+
+import { conversations } from "@/lib/constants/mock-data";
 import { AITutorClient } from "./client";
 
-export default async function AITutorPage() {
-  const conversations = await getConversations();
+export default function AITutorPage() {
   return <AITutorClient conversations={conversations} />;
 }

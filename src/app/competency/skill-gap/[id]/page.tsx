@@ -4,13 +4,11 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
 import { Button } from "@/components/ui/button";
-import { getSkillGaps, getCourses } from "@/lib/data";
+import { skillGaps, courses } from "@/lib/constants/mock-data";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
 export default async function SkillGapDetailPage({ params }: { params: Promise<{ id: string }> }) {
-  const skillGaps = await getSkillGaps();
-  const courses = await getCourses();
   const { id } = await params;
   const gap = skillGaps.find((g) => g.id === id);
 

@@ -2,7 +2,7 @@ import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { getNotifications } from "@/lib/data";
+import { notifications } from "@/lib/constants/mock-data";
 import Link from "next/link";
 
 const typeIcons: Record<string, string> = {
@@ -13,8 +13,7 @@ const typeIcons: Record<string, string> = {
   system: "⚙️",
 };
 
-export default async function NotificationsPage() {
-  const notifications = await getNotifications();
+export default function NotificationsPage() {
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Notifications" }]}>
       <PageHeader title="Notifications" description="Stay updated on recommendations, assessments, and platform updates" />

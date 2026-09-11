@@ -3,12 +3,10 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { getCompetencies, getCompetencyDomainSummaries } from "@/lib/data";
+import { competencies, competencyDomainSummaries } from "@/lib/constants/mock-data";
 import Link from "next/link";
 
-export default async function CompetencyPage() {
-  const competencies = await getCompetencies();
-  const competencyDomainSummaries = await getCompetencyDomainSummaries();
+export default function CompetencyPage() {
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Competency" }]}>
       <PageHeader title="Competency Profile" description="Your evidence-based competency assessment across all domains" />

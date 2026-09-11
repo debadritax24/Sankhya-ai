@@ -4,13 +4,12 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { getSkillGaps } from "@/lib/data";
+import { skillGaps } from "@/lib/constants/mock-data";
 import Link from "next/link";
 
 const priorityOrder = ["CRITICAL", "HIGH", "MEDIUM", "LOW"] as const;
 
-export default async function SkillGapPage() {
-  const skillGaps = await getSkillGaps();
+export default function SkillGapPage() {
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Skill Gaps" }]}>
       <PageHeader title="Skill Gap Analysis" description="AI-prioritized gaps between your current skills and role requirements" />
