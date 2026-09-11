@@ -4,22 +4,24 @@ import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { currentUser } from "@/lib/constants/mock-data";
-
-const profileFields = [
-  { label: "Name", value: currentUser.name },
-  { label: "Email", value: currentUser.email },
-  { label: "Designation", value: currentUser.designation },
-  { label: "Department", value: currentUser.department },
-  { label: "Current Assignment", value: currentUser.currentAssignment },
-  { label: "Educational Qualification", value: currentUser.education },
-  { label: "Experience", value: currentUser.experience },
-  { label: "Previous Training", value: currentUser.previousTraining },
-  { label: "Current Role", value: currentUser.currentRole },
-  { label: "Career Goal", value: currentUser.careerGoal },
-];
+import { useUser } from "@/components/providers/user-provider";
 
 export default function ProfilePage() {
+  const { user } = useUser();
+
+  const profileFields = [
+    { label: "Name", value: user?.name || "Not set" },
+    { label: "Email", value: user?.email || "Not set" },
+    { label: "Designation", value: user?.designation || "Not set" },
+    { label: "Department", value: user?.department || "Not set" },
+    { label: "Current Assignment", value: "Official Statistics — NSO" },
+    { label: "Educational Qualification", value: "M.Sc. Statistics" },
+    { label: "Experience", value: "3 years" },
+    { label: "Previous Training", value: "NSSO Field Training, Python Basics" },
+    { label: "Current Role", value: user?.role || "LEARNER" },
+    { label: "Career Goal", value: "Senior Statistical Officer" },
+  ];
+
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "My Profile" }]}>
       <PageHeader

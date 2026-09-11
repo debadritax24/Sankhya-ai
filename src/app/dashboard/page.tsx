@@ -9,14 +9,17 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Target, TrendingDown, BookOpen, ClipboardCheck, Bot } from "lucide-react";
 import Link from "next/link";
-import { currentUser, competencyStats, competencyDomainSummaries, skillGaps, courses, assessments, learningProgress } from "@/lib/constants/mock-data";
+import { useUser } from "@/components/providers/user-provider";
+import { competencyStats, competencyDomainSummaries, skillGaps, courses, assessments, learningProgress } from "@/lib/constants/mock-data";
 
 export default function DashboardPage() {
+  const { user } = useUser();
+  const firstName = user?.name?.split(" ")[0] || "User";
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard" }]}>
       {/* Welcome */}
       <div className="mb-8">
-        <h1 className="text-2xl font-bold text-gray-900">Good morning, {currentUser.name.split(" ")[0]}</h1>
+        <h1 className="text-2xl font-bold text-gray-900">Good morning, {firstName}</h1>
         <p className="mt-1 text-gray-500">Your competency profile is {competencyStats.overallScore}% complete. Continue learning to close your skill gaps.</p>
       </div>
 

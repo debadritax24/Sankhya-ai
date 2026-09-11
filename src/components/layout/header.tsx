@@ -1,9 +1,11 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X, Search, Bell } from "lucide-react";
-import { UserButton } from "@clerk/nextjs";
+import { useRouter } from "next/navigation";
+import { Menu, X, Search, Bell, LogOut } from "lucide-react";
 import { useState } from "react";
+import { useUser } from "@/components/providers/user-provider";
+import { Button } from "@/components/ui/button";
 
 const publicNav = [
   { name: "Home", href: "/" },
@@ -16,6 +18,13 @@ const publicNav = [
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const { user, logout, isLoggedIn } = useUser();
+  const router = useRouter();
+
+  const handleLogout = () => {
+    logout();
+    router.push("/");
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
@@ -47,11 +56,40 @@ export function Header() {
             <button type="button" className="p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Search">
               <Search className="h-4 w-4" />
             </button>
-            <Link href="/notifications" className="relative p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Notifications">
-              <Bell className="h-4 w-4" />
-              <span className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-accent" />
-            </Link>
-            <UserButton appearance={{ elements: { avatarBox: "h-7 w-7" } }} />
+            {isLoggedIn && (
+              <>
+                <Link href="/notifications" className="relative p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Notifications">
+                  <Bell className="h-4 w-4" />
+                  <span className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-accent" />
+                </Link>
+                <div className="flex items-center gap-2 pl-2 border-l border-gray-200">
+                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold">
+                    {user?.name?.charAt(0)?.toUpperCase() || "U"}
+                  </div>
+                  <span className="text-xs font-medium text-gray-700 hidden sm:inline max-w-[100px] truncate">
+                    {user?.name?.split(" ")[0] || "User"}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={handleLogout}
+                    className="p-1.5 text-gray-400 hover:text-red-500 rounded transition-colors"
+                    aria-label="Logout"
+                  >
+                    <LogOut className="h-3.5 w-3.5" />
+                  </button>
+                </div>
+              </>
+            )}
+            {!isLoggedIn && (
+              <div className="flex items-center gap-2">
+                <Link href="/sign-in">
+                  <Button variant="ghost" size="sm">Sign In</Button>
+                </Link>
+                <Link href="/sign-up">
+                  <Button size="sm">Get Started</Button>
+                </Link>
+              </div>
+            )}
             <button
               type="button"
               className="lg:hidden p-2 text-gray-400 hover:text-gray-600 rounded"
@@ -62,23 +100,23 @@ export function Header() {
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile nav */}
-      {mobileOpen && (
-        <nav className="lg:hidden border-t border-gray-200 bg-white px-4 py-3 space-y-1" aria-label="Mobile navigation">
-          {publicNav.map((item) => (
-            <Link
-              key={item.name}
-              href={item.href}
-              className="block px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded"
-              onClick={() => setMobileOpen(false)}
-            >
-              {item.name}
-            </Link>
-          ))}
-        </nav>
-      )}
+        {/* Mobile nav */}
+        {mobileOpen && (
+          <nav className="lg:hidden py-2 border-t border-gray-100" aria-label="Mobile navigation">
+            {publicNav.map((item) => (
+              <Link
+                key={item.name}
+                href={item.href}
+                className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded"
+                onClick={() => setMobileOpen(false)}
+              >
+                {item.name}
+              </Link>
+            ))}
+          </nav>
+        )}
+      </div>
     </header>
   );
 }

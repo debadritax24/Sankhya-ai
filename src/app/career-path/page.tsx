@@ -5,9 +5,12 @@ import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { currentUser, skillGaps, competencyDomainSummaries } from "@/lib/constants/mock-data";
+import { useUser } from "@/components/providers/user-provider";
+import { skillGaps, competencyDomainSummaries } from "@/lib/constants/mock-data";
 
 export default function CareerPathPage() {
+  const { user } = useUser();
+
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Career Path" }]}>
       <PageHeader title="Career Path" description="Your career progression and future skill requirements" />
@@ -20,7 +23,7 @@ export default function CareerPathPage() {
             <div className="flex items-center justify-between">
               <div className="text-center p-4">
                 <p className="text-xs text-gray-500 mb-1">Current Role</p>
-                <p className="font-semibold text-gray-900">{currentUser.currentRole}</p>
+                <p className="font-semibold text-gray-900">{user?.designation || "Statistical Officer"}</p>
                 <Badge variant="secondary" className="mt-2">Level 7</Badge>
               </div>
               <div className="flex-1 px-8">
@@ -31,7 +34,7 @@ export default function CareerPathPage() {
               </div>
               <div className="text-center p-4">
                 <p className="text-xs text-gray-500 mb-1">Target Role</p>
-                <p className="font-semibold text-primary">{currentUser.careerGoal}</p>
+                <p className="font-semibold text-primary">Senior Statistical Officer</p>
                 <Badge variant="accent" className="mt-2">Level 9</Badge>
               </div>
             </div>

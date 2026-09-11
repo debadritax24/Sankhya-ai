@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Geist_Mono } from "next/font/google";
 import { ClerkProvider } from "@clerk/nextjs";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import { UserProvider } from "@/components/providers/user-provider";
 import "./globals.css";
 
 const inter = Inter({
@@ -49,14 +50,16 @@ export default function RootLayout({
 }>) {
   return (
     <ClerkProvider>
-      <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
-        <body className="min-h-screen bg-background text-foreground antialiased">
-          <a href="#main-content" className="skip-to-main">
-            Skip to main content
-          </a>
-          <SmoothScrollProvider>{children}</SmoothScrollProvider>
-        </body>
-      </html>
+      <UserProvider>
+        <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
+          <body className="min-h-screen bg-background text-foreground antialiased">
+            <a href="#main-content" className="skip-to-main">
+              Skip to main content
+            </a>
+            <SmoothScrollProvider>{children}</SmoothScrollProvider>
+          </body>
+        </html>
+      </UserProvider>
     </ClerkProvider>
   );
 }
