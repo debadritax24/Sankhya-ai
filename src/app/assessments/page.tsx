@@ -1,14 +1,13 @@
-"use client";
-
 import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { assessments } from "@/lib/constants/mock-data";
+import { getAssessments } from "@/lib/data";
 
 
-export default function AssessmentsPage() {
+export default async function AssessmentsPage() {
+  const assessments = await getAssessments();
   const upcoming = assessments.filter((a) => a.status === "upcoming" || a.status === "recommended");
   const completed = assessments.filter((a) => a.status === "completed");
 

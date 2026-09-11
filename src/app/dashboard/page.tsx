@@ -1,5 +1,3 @@
-"use client";
-
 import { AppLayout } from "@/components/layout/app-layout";
 import { StatCard } from "@/components/ui/stat-card";
 import { Card, CardContent, CardHeader } from "@/components/ui/card";
@@ -9,12 +7,18 @@ import { ProgressBar } from "@/components/ui/progress-bar";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Target, TrendingDown, BookOpen, ClipboardCheck, Bot } from "lucide-react";
 import Link from "next/link";
-import { useUser } from "@/components/providers/user-provider";
-import { competencyStats, competencyDomainSummaries, skillGaps, courses, assessments, learningProgress } from "@/lib/constants/mock-data";
+import { currentUser } from '@clerk/nextjs/server';
+import { getCompetencyStats, getCompetencyDomainSummaries, getSkillGaps, getCourses, getAssessments, getLearningProgress } from "@/lib/data";
 
-export default function DashboardPage() {
-  const { user } = useUser();
-  const firstName = user?.name?.split(" ")[0] || "User";
+export default async function DashboardPage() {
+  const competencyStats = await getCompetencyStats();
+  const competencyDomainSummaries = await getCompetencyDomainSummaries();
+  const skillGaps = await getSkillGaps();
+  const courses = await getCourses();
+  const assessments = await getAssessments();
+  const learningProgress = await getLearningProgress();
+  const user = await currentUser();
+  const firstName = user?.firstName || "User";
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard" }]}>
       {/* Welcome */}
@@ -60,7 +64,7 @@ export default function DashboardPage() {
         {/* Top Skill Gaps */}
         <Card className="lg:col-span-1">
           <CardHeader>
-            <SectionHeader title="Top Skill Gaps" action={<Link href="/skill-gap"><Button variant="ghost" size="sm">View All</Button></Link>} />
+            <SectionHeader title="Top Skill Gaps" action={<Link href="/competency/skill-gap"><Button variant="ghost" size="sm">View All</Button></Link>} />
           </CardHeader>
           <CardContent>
             <div className="space-y-3">

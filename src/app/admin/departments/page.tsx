@@ -1,13 +1,12 @@
-"use client";
-
 import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { departments } from "@/lib/constants/mock-data";
+import { getDepartments } from "@/lib/data";
 
-export default function AdminDepartmentsPage() {
+export default async function AdminDepartmentsPage() {
+  const departments = await getDepartments();
   return (
     <AppLayout breadcrumbs={[{ label: "Admin", href: "/admin" }, { label: "Departments" }]} role="admin">
       <PageHeader title="Department Analytics" description="Compare competency, gaps, and learning across departments" />

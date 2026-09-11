@@ -9,6 +9,7 @@ from app.core.database import get_db
 from app.core.security import get_current_user
 from app.models import User, AIConversation, AIMessage
 from app.schemas.common import APIResponse
+from app.ai.rag import ask_question_with_rag
 
 router = APIRouter()
 
@@ -92,6 +93,7 @@ async def send_message(
             detail="Conversation not found",
         )
 
+    # 1. Save User Message
     user_message = AIMessage(
         conversation_id=conversation_id,
         role="user",
@@ -99,17 +101,19 @@ async def send_message(
     )
     db.add(user_message)
 
-    ai_response_content = (
-        f"I received your question: '{message_data.content}'. "
-        "The AI tutor backend will process this query against the knowledge base "
-        "and return personalized learning guidance."
-    )
+    try:
+        # 2. Query the RAG Engine directly
+        ai_response_content = await ask_question_with_rag(db, message_data.content)
+    except Exception as e:
+        ai_response_content = "I'm sorry, my systems are currently unavailable. Please check that LLM API keys are configured correctly."
+        print(f"RAG Error: {e}")
 
+    # 3. Save AI Message
     ai_message = AIMessage(
         conversation_id=conversation_id,
         role="assistant",
         content=ai_response_content,
-        sources={"type": "placeholder", "note": "Actual RAG pipeline will be connected here"},
+        sources={"engine": "pgvector_rag", "status": "retrieved"},
     )
     db.add(ai_message)
 

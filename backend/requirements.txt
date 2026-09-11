@@ -1,47 +1,47 @@
 # Core
-fastapi==0.115.0
-uvicorn[standard]==0.30.0
-python-multipart==0.0.9
+fastapi
+uvicorn[standard]
+python-multipart
 
 # Database
-sqlalchemy[asyncio]==2.0.35
-asyncpg==0.29.0
-alembic==1.13.2
-greenlet==3.1.1
+sqlalchemy[asyncio]
+asyncpg
+alembic
+greenlet
 
 # Redis
-redis[hiredis]==5.1.0
+redis[hiredis]
 
 # Auth
-PyJWT==2.9.0
-jwcrypto==1.5.6
+PyJWT
+jwcrypto
 
 # Validation
-pydantic==2.9.2
-pydantic-settings==2.5.2
+pydantic
+pydantic-settings
 
 # HTTP
-httpx==0.27.2
+httpx
 
 # AI / ML
-openai==1.51.0
-tiktoken==0.8.0
+openai
+tiktoken
 
 # Document processing
-pymupdf==1.24.10
-python-docx==1.1.2
-python-pptx==1.0.2
+#pymupdf
+python-docx
+python-pptx
 
 # Object storage
-boto3==1.35.52
+boto3
 
 # Utilities
-python-dotenv==1.0.1
-structlog==24.4.0
-tenacity==9.0.0
+python-dotenv
+structlog
+tenacity
 
 # Testing
-pytest==8.3.3
-pytest-asyncio==0.24.0
-pytest-cov==5.0.0
-httpx==0.27.2
+pytest
+pytest-asyncio
+pytest-cov
+svix

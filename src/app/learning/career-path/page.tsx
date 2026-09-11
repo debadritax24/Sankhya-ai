@@ -1,15 +1,13 @@
-"use client";
-
 import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { useUser } from "@/components/providers/user-provider";
-import { skillGaps, competencyDomainSummaries } from "@/lib/constants/mock-data";
+import { getSkillGaps, getCompetencyDomainSummaries } from "@/lib/data";
 
-export default function CareerPathPage() {
-  const { user } = useUser();
+export default async function CareerPathPage() {
+  const skillGaps = await getSkillGaps();
+  const competencyDomainSummaries = await getCompetencyDomainSummaries();
 
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Career Path" }]}>
@@ -23,7 +21,7 @@ export default function CareerPathPage() {
             <div className="flex items-center justify-between">
               <div className="text-center p-4">
                 <p className="text-xs text-gray-500 mb-1">Current Role</p>
-                <p className="font-semibold text-gray-900">{user?.designation || "Statistical Officer"}</p>
+                <p className="font-semibold text-gray-900">&quot;Senior Statistical Officer&quot;</p>
                 <Badge variant="secondary" className="mt-2">Level 7</Badge>
               </div>
               <div className="flex-1 px-8">
