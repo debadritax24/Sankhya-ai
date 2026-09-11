@@ -20,14 +20,14 @@ import { useState } from "react";
 
 const learnerNav = [
   { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
-  { name: "My Profile", href: "/profile", icon: User },
+  { name: "My Profile", href: "/dashboard/profile", icon: User },
   { name: "Competency", href: "/competency", icon: Target },
-  { name: "Skill Gaps", href: "/skill-gap", icon: TrendingDown },
+  { name: "Skill Gaps", href: "/competency/skill-gap", icon: TrendingDown },
   { name: "Learning", href: "/learning", icon: BookOpen },
   { name: "Assessments", href: "/assessments", icon: ClipboardCheck },
   { name: "AI Tutor", href: "/ai-tutor", icon: Bot },
-  { name: "Career Path", href: "/career-path", icon: Route },
-  { name: "Notifications", href: "/notifications", icon: Bell },
+  { name: "Career Path", href: "/learning/career-path", icon: Route },
+  { name: "Notifications", href: "/dashboard/notifications", icon: Bell },
 ];
 
 const trainerNav = [

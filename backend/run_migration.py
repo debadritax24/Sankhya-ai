@@ -35,6 +35,8 @@ from app.models import *  # noqa: F401, F403
 
 def get_database_url() -> str:
     url = os.getenv("DATABASE_URL")
+    if url:
+        url = url.replace("postgresql://", "postgresql+asyncpg://").split("?")[0]
     if not url:
         raise RuntimeError(
             "DATABASE_URL not found in environment. "

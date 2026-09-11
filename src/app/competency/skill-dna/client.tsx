@@ -1,19 +1,19 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { competencies } from "@/lib/constants/mock-data";
 import { RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, ResponsiveContainer, Legend } from "recharts";
 
-const radarData = competencies.slice(0, 8).map((c) => ({
-  skill: c.name,
-  current: c.currentScore,
-  required: c.requiredScore,
-}));
+ 
+ 
+ 
+ 
 
-export default function SkillDNAPage() {
+
+export function SkillDNAClient({ competencies, radarData }: { competencies: any[], radarData: any[] }) {
   return (
     <AppLayout breadcrumbs={[{ label: "Dashboard", href: "/dashboard" }, { label: "Skill DNA" }]}>
       <PageHeader title="Skill DNA" description="Complete competency intelligence fingerprint" />

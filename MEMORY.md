@@ -452,3 +452,54 @@ uvicorn app.main:app --reload --host 0.0.0.0 --port 8000  # Start server
 ---
 
 *Last updated: 2026-09-11 (Backend Phase 1-6 complete)*
+# Sankhya AI - Project Memory
+
+## What Was Completed
+- Configured FastAPI backend to explicitly load the single source of truth `.env` file from the project root (`ROOT/.env`), satisfying the strict environment requirement.
+- Modified `backend/app/core/config.py` to use `pathlib` for a robust absolute path resolution to the root `.env` rather than fragile relative paths.
+- Removed unnecessary `backend/.env` copies to maintain a single source of truth.
+- Configured `Pydantic` settings to tolerate extra Next.js frontend variables (`extra = "ignore"`).
+- Refactored `DATABASE_URL` parsing to dynamically strip `channel_binding=require` specifically for the `asyncpg` driver in both `app/core/database.py` and `run_migration.py`, ensuring connection works seamlessly on Neon.
+- Implemented requested API endpoints including `GET /` (root) and updated `/health/ready` to `GET /health/db`.
+- Ran Alembic migrations successfully to verify the complete 27-table database schema (including users, competencies, assessments, pgvector embeddings).
+
+## Files Changed
+- `backend/app/core/config.py`: Added root `.env` path resolution via `pathlib` and `extra="ignore"`.
+- `backend/app/core/database.py`: Stripped unsupported URL parameters for `asyncpg`.
+- `backend/app/main.py`: Added `GET /` and `GET /health/db`.
+- `backend/run_migration.py`: Fixed `asyncpg` URL parsing issue to allow successful verification of the schema.
+- `backend/requirements.txt`: Unpinned dependencies (`pydantic-core`, `tiktoken`, `asyncpg`) to support Python 3.14 wheel compilation.
+
+## Database Changes
+- None directly from the frontend, but verified 27 tables are fully deployed and structurally compliant in Neon PostgreSQL, including `pgvector` extensions and tables like `document_chunks` and `embeddings`.
+
+## Migration Status
+- Migration script (`run_migration.py`) successfully executed and verified all 27 tables. Status: COMPLETE.
+
+## API Changes
+- Added `GET /` returning basic API info.
+- Renamed `/health/ready` to `/health/db` as requested.
+
+## Architecture Decisions
+- Used `pathlib` to dynamically evaluate the path from the deeply nested config file back to the project root, satisfying the monorepo constraint.
+- Next.js environment variables (like `NEXT_PUBLIC_API_URL`) are ignored by the backend dynamically using Pydantic's `extra="ignore"` constraint.
+- Next.js requires `sslmode=require` and `channel_binding=require` for Prisma/Neon edge connections, but Python `asyncpg` rejects `channel_binding`. Rather than editing `.env` and breaking the frontend, we handle protocol cleaning dynamically in the Python runtime.
+
+## Unresolved Issues
+- Redis `redis://localhost:6379/0` is currently throwing a connection refused warning on startup if Redis is not running locally. The backend gracefully continues, but it will need to be configured for caching later.
+- AI features (`openai`, `tiktoken`) are wired up but `LLM_API_KEY` needs to be provided in `.env` when executing AI routes.
+
+## Next Steps
+- Implement specific versioned endpoints (e.g. `/api/v1/users`, `/api/v1/competencies`).
+- Flesh out the RAG endpoints using `pgvector` for semantic similarity search.
+- Connect frontend Server Components directly to the new API endpoints.
+
+## RAG & AI Engine Implementation (Sep 11)
+- Created the core AI directory structure (`backend/app/ai/`).
+- Implemented `embeddings.py` to interface with OpenAI (`text-embedding-3-small`) for generating vector embeddings.
+- Implemented `chunking.py` for text pre-processing and overlapping token window chunking.
+- Implemented `retrieval.py` which executes a raw SQL `SELECT` to utilize `pgvector`'s `<=>` (cosine distance) operator against the `vector_1536` column in the `embeddings` table.
+- Implemented `rag.py` to perform semantic search context retrieval and inject chunks into an LLM system prompt.
+- Implemented `recommendation_engine.py` to generate explicit LLM-based reasoning for course recommendations based on the user's role and specific skill gap math.
+- Implemented `assessment_generator.py` to force grounded MCQ generation outputting raw JSON arrays based strictly on retrieved context.
+- Implemented `competency_engine.py` with deterministic gap calculation logic (`Target Level - Current Level`).

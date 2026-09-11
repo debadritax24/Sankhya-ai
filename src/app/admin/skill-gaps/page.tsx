@@ -1,13 +1,12 @@
-"use client";
-
 import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { skillGaps } from "@/lib/constants/mock-data";
+import { getSkillGaps } from "@/lib/data";
 
-export default function AdminSkillGapsPage() {
+export default async function AdminSkillGapsPage() {
+  const skillGaps = await getSkillGaps();
   return (
     <AppLayout breadcrumbs={[{ label: "Admin", href: "/admin" }, { label: "Skill Gaps" }]} role="admin">
       <PageHeader title="Organization-Wide Skill Gaps" description="Most common and critical skill gaps across departments" />

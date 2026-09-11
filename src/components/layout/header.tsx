@@ -1,30 +1,23 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { Menu, X, Search, Bell, LogOut } from "lucide-react";
+import { Menu, X, Search, Bell } from "lucide-react";
 import { useState } from "react";
-import { useUser } from "@/components/providers/user-provider";
+import { UserButton, useUser } from "@clerk/nextjs";
 import { Button } from "@/components/ui/button";
 
 const publicNav = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
   { name: "How It Works", href: "/how-it-works" },
-  { name: "Competency Framework", href: "/competency-framework" },
-  { name: "Learning Ecosystem", href: "/learning-ecosystem" },
+  { name: "Competency Framework", href: "/competency/competency-framework" },
+  { name: "Learning Ecosystem", href: "/learning/learning-ecosystem" },
   { name: "Security", href: "/security" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { user, logout, isLoggedIn } = useUser();
-  const router = useRouter();
-
-  const handleLogout = () => {
-    logout();
-    router.push("/");
-  };
+  const { isSignedIn, isLoaded } = useUser();
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
@@ -32,7 +25,7 @@ export function Header() {
         <div className="flex h-14 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-text-inverse font-bold text-sm">
+            <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-primary-foreground font-bold text-sm">
               SA
             </div>
             <span className="text-sm font-semibold text-primary hidden sm:inline">SANKHYA AI</span>
@@ -56,31 +49,18 @@ export function Header() {
             <button type="button" className="p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Search">
               <Search className="h-4 w-4" />
             </button>
-            {isLoggedIn && (
+            {isLoaded && isSignedIn && (
               <>
-                <Link href="/notifications" className="relative p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Notifications">
+                <Link href="/dashboard/notifications" className="relative p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Notifications">
                   <Bell className="h-4 w-4" />
                   <span className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-accent" />
                 </Link>
                 <div className="flex items-center gap-2 pl-2 border-l border-gray-200">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-full bg-primary/10 text-primary text-xs font-bold">
-                    {user?.name?.charAt(0)?.toUpperCase() || "U"}
-                  </div>
-                  <span className="text-xs font-medium text-gray-700 hidden sm:inline max-w-[100px] truncate">
-                    {user?.name?.split(" ")[0] || "User"}
-                  </span>
-                  <button
-                    type="button"
-                    onClick={handleLogout}
-                    className="p-1.5 text-gray-400 hover:text-red-500 rounded transition-colors"
-                    aria-label="Logout"
-                  >
-                    <LogOut className="h-3.5 w-3.5" />
-                  </button>
+                  <UserButton />
                 </div>
               </>
             )}
-            {!isLoggedIn && (
+            {isLoaded && !isSignedIn && (
               <div className="flex items-center gap-2">
                 <Link href="/sign-in">
                   <Button variant="ghost" size="sm">Sign In</Button>

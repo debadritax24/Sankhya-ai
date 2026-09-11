@@ -1,17 +1,4 @@
-export interface User {
-  id: string;
-  name: string;
-  email: string;
-  designation: string;
-  department: string;
-  currentAssignment: string;
-  education: string;
-  experience: string;
-  previousTraining: string;
-  currentRole: string;
-  careerGoal: string;
-  avatarUrl?: string;
-}
+
 
 export interface Competency {
   id: string;
@@ -163,12 +150,7 @@ export interface ConversationMessage {
   context?: string;
 }
 
-export interface AnalyticsMetric {
-  label: string;
-  value: string | number;
-  change?: number;
-  changeLabel?: string;
-}
+
 
 export interface CompetencyDomainSummary {
   domain: CompetencyDomain;

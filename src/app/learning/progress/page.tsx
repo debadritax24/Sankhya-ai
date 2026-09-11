@@ -1,12 +1,11 @@
-"use client";
-
 import { AppLayout } from "@/components/layout/app-layout";
 import { PageHeader } from "@/components/ui/page-header";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ProgressBar } from "@/components/ui/progress-bar";
-import { learningProgress } from "@/lib/constants/mock-data";
+import { getLearningProgress } from "@/lib/data";
 
-export default function LearningProgressPage() {
+export default async function LearningProgressPage() {
+  const learningProgress = await getLearningProgress();
   const totalHours = learningProgress.reduce((sum, lp) => sum + lp.timeSpentMinutes, 0) / 60;
   const completed = learningProgress.filter((lp) => lp.completedAt).length;
 

@@ -19,7 +19,7 @@ def get_engine():
         if not settings.DATABASE_URL:
             raise RuntimeError("DATABASE_URL is not configured")
         _engine = create_async_engine(
-            settings.DATABASE_URL,
+            settings.DATABASE_URL.replace("postgresql://", "postgresql+asyncpg://").split("?")[0],
             pool_size=settings.DB_POOL_SIZE,
             max_overflow=settings.DB_MAX_OVERFLOW,
             pool_timeout=settings.DB_POOL_TIMEOUT,

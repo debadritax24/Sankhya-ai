@@ -39,33 +39,21 @@ async def shutdown_event():
     await close_db()
     await close_redis()
 
+@app.get("/")
+async def root():
+    return {"message": "SANKHYA AI Backend API", "docs": "/docs"}
 
 @app.get("/health")
 async def health_check():
     return {"status": "healthy", "version": "1.0.0"}
 
-
-@app.get("/health/ready")
+@app.get("/health/db")
 async def readiness_check(response: Response):
-    checks = {"postgres": False, "redis": False}
-
     try:
         session_factory = get_session_factory()
         async with session_factory() as session:
             await session.execute(text("SELECT 1"))
-        checks["postgres"] = True
+        return {"status": "healthy", "database": "connected"}
     except Exception:
-        pass
-
-    try:
-        client = get_redis_client()
-        await client.ping()
-        checks["redis"] = True
-    except Exception:
-        pass
-
-    all_healthy = all(checks.values())
-    if not all_healthy:
         response.status_code = 503
-
-    return {"status": "healthy" if all_healthy else "degraded", "checks": checks}
+        return {"status": "unhealthy", "database": "disconnected"}

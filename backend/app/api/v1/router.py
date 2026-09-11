@@ -11,6 +11,7 @@ from app.api.v1 import (
     ai_tutor,
     analytics,
     notifications,
+    webhooks,
 )
 
 v1_router = APIRouter(prefix="/api/v1", tags=["v1"])
@@ -26,3 +27,4 @@ v1_router.include_router(documents.router, prefix="/documents", tags=["Documents
 v1_router.include_router(ai_tutor.router, prefix="/ai-tutor", tags=["AI Tutor"])
 v1_router.include_router(analytics.router, prefix="/analytics", tags=["Analytics"])
 v1_router.include_router(notifications.router, prefix="/notifications", tags=["Notifications"])
+v1_router.include_router(webhooks.router, prefix="/webhooks", tags=["Webhooks"])

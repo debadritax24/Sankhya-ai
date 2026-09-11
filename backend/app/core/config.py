@@ -1,3 +1,5 @@
+import os
+from pathlib import Path
 from pydantic_settings import BaseSettings
 from functools import lru_cache
 
@@ -21,6 +23,7 @@ class Settings(BaseSettings):
     # Clerk
     CLERK_SECRET_KEY: str = ""
     CLERK_PUBLISHABLE_KEY: str = ""
+    CLERK_WEBHOOK_SECRET: str = ""
 
     # Object Storage
     OBJECT_STORAGE_ENDPOINT: str = ""
@@ -48,9 +51,10 @@ class Settings(BaseSettings):
     CACHE_TTL_RECOMMENDATIONS: int = 300
 
     class Config:
-        env_file = ".env"
+        env_file = str(Path(__file__).resolve().parent.parent.parent.parent / '.env')
         env_file_encoding = "utf-8"
         case_sensitive = True
+        extra = "ignore"
 
 
 @lru_cache()

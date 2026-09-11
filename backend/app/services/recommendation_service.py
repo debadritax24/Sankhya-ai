@@ -3,6 +3,8 @@ from sqlalchemy import select
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.orm import selectinload
 
+from app.ai.recommendation_engine import generate_recommendation_explanation
+import asyncio
 from app.models import Skill, UserCompetency, Course, CourseSkill, Recommendation, SkillGap
 from app.core.redis import cache_delete_pattern, cache_get, cache_set
 
@@ -108,13 +110,24 @@ class RecommendationService:
         )
         for rec in existing_result.scalars().all():
             await db.delete(rec)
-        for rec in recommendations:
+            
+        # Generate explanations in parallel
+        async def fetch_reason(rec):
+            gaps_info = [{"skill_name": gap_by_skill[g].skill.name, "current_level": 1, "target_level": gap_by_skill[g].target_level if hasattr(gap_by_skill[g], 'target_level') else 3} for g in rec["addressed_gaps"] if g in gap_by_skill]
+            try:
+                return await generate_recommendation_explanation("Government Official", rec["title"], gaps_info)
+            except Exception:
+                return f"Addresses {len(rec['addressed_gaps'])} skill gap(s)"
+
+        reasons = await asyncio.gather(*(fetch_reason(rec) for rec in recommendations))
+
+        for rec, reason_text in zip(recommendations, reasons):
             db.add(Recommendation(
                 user_id=user_id,
                 course_id=rec["course_id"],
                 rank=rec["rank"],
                 score=rec["score"],
-                reason=f"Addresses {len(rec['addressed_gaps'])} skill gap(s)",
+                reason=reason_text,
             ))
         await db.flush()
         return recommendations
