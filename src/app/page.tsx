@@ -37,7 +37,6 @@ export default function HomePage() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-gray-50 to-white py-16 sm:py-24">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          <Badge variant="accent" className="mb-4">SIH 2026 — Problem Statement 26101</Badge>
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
             <span className="text-primary">AI-Powered Skill Intelligence</span>
             <br />
