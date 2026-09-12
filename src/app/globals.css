@@ -1,135 +1,170 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #1a1a1a;
+  /* Deep Navy + Warm Off-White — Premium Institutional Palette */
+  --background: #F7F6F3;
+  --foreground: #080D2B;
 
-  /* Government Navy / Deep Blue */
-  --primary: #0c2340;
-  --primary-light: #1a3a5c;
-  --primary-lighter: #2d5a87;
+  /* Deep Navy */
+  --navy: #080D2B;
+  --navy-light: #12193D;
+  --navy-surface: rgba(255, 255, 255, 0.035);
 
-  /* Indian Saffron (Accent - used sparingly) */
-  --accent: #ff9933;
-  --accent-light: #ffb366;
-  --accent-dark: #e68a2e;
+  /* Warm Off-White */
+  --off-white: #F7F6F3;
+  --ivory: #FCFBF8;
 
-  /* Green for positive/status */
-  --success: #138808;
-  --success-light: #2da61f;
-  --success-dark: #0d5f06;
+  /* Warm Beige / Gray */
+  --beige: #8D837A;
+  --muted-gray: #77746F;
 
-  /* Neutrals */
-  --gray-50: #f8f9fa;
-  --gray-100: #f1f3f5;
-  --gray-200: #e9ecef;
-  --gray-300: #dee2e6;
-  --gray-400: #ced4da;
-  --gray-500: #adb5bd;
-  --gray-600: #868e96;
-  --gray-700: #495057;
-  --gray-800: #343a40;
-  --gray-900: #212529;
+  /* Muted Cyan Accent */
+  --cyan: #58C4C0;
+  --cyan-light: rgba(88, 196, 192, 0.12);
 
-  /* Status Colors */
-  --info: #0c2340;
-  --warning: #ff9933;
-  --error: #dc3545;
+  /* Warm Orange Accent */
+  --orange: #F2A65A;
+  --orange-light: #FFF3E6;
+  --orange-border: #F2CFA9;
+
+  /* Primary */
+  --primary: #080D2B;
+  --primary-light: #12193D;
+  --primary-lighter: #1E2A52;
+
+  /* Accent */
+  --accent: #58C4C0;
+  --accent-light: rgba(88, 196, 192, 0.12);
+
+  /* Success */
+  --success: #4A7C59;
+  --success-light: rgba(74, 124, 89, 0.12);
+
+  /* Warning */
+  --warning: #F2A65A;
+
+  /* Error */
+  --error: #9B3B3B;
+
+  /* Borders */
+  --border: #DDDAD4;
+  --border-light: #E8E5DF;
+  --border-dark: rgba(247, 246, 243, 0.10);
 
   /* Typography */
-  --text-primary: #1a1a1a;
-  --text-secondary: #495057;
-  --text-muted: #868e96;
-  --text-inverse: #ffffff;
+  --text-primary: #080D2B;
+  --text-secondary: #77746F;
+  --text-muted: #8D837A;
+  --text-inverse: #F7F6F3;
+  --text-on-dark: #F7F6F3;
+  --text-on-dark-secondary: #B8B6B0;
+
+  /* Surfaces */
+  --surface-light: #FCFBF8;
+  --surface-dark: #0F1530;
+  --surface-card: rgba(255, 255, 255, 0.035);
+
+  /* Semantic */
+  --info: #58C4C0;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-navy: var(--navy);
+  --color-navy-light: var(--navy-light);
+  --color-off-white: var(--off-white);
+  --color-ivory: var(--ivory);
+  --color-beige: var(--beige);
+  --color-muted-gray: var(--muted-gray);
+  --color-cyan: var(--cyan);
+  --color-cyan-light: var(--cyan-light);
+  --color-orange: var(--orange);
+  --color-orange-light: var(--orange-light);
   --color-primary: var(--primary);
   --color-primary-light: var(--primary-light);
   --color-primary-lighter: var(--primary-lighter);
   --color-accent: var(--accent);
   --color-accent-light: var(--accent-light);
-  --color-accent-dark: var(--accent-dark);
   --color-success: var(--success);
   --color-success-light: var(--success-light);
-  --color-success-dark: var(--success-dark);
-  --color-info: var(--info);
   --color-warning: var(--warning);
   --color-error: var(--error);
-
-  /* Gray palette */
-  --color-gray-50: var(--gray-50);
-  --color-gray-100: var(--gray-100);
-  --color-gray-200: var(--gray-200);
-  --color-gray-300: var(--gray-300);
-  --color-gray-400: var(--gray-400);
-  --color-gray-500: var(--gray-500);
-  --color-gray-600: var(--gray-600);
-  --color-gray-700: var(--gray-700);
-  --color-gray-800: var(--gray-800);
-  --color-gray-900: var(--gray-900);
-
-  /* Text colors */
+  --color-border: var(--border);
+  --color-border-light: var(--border-light);
+  --color-border-dark: var(--border-dark);
   --color-text-primary: var(--text-primary);
   --color-text-secondary: var(--text-secondary);
   --color-text-muted: var(--text-muted);
   --color-text-inverse: var(--text-inverse);
+  --color-text-on-dark: var(--text-on-dark);
+  --color-text-on-dark-secondary: var(--text-on-dark-secondary);
+  --color-surface-light: var(--surface-light);
+  --color-surface-dark: var(--surface-dark);
+  --color-surface-card: var(--surface-card);
+  --color-info: var(--info);
 
-  /* Font families */
-  --font-sans: var(--font-inter);
+  --font-sans: var(--font-manrope);
   --font-mono: var(--font-geist-mono);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-sans), system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-family: var(--font-sans), "Inter", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Government-style focus ring */
+/* Typography — Editorial */
+h1, h2, h3, h4, h5, h6 {
+  letter-spacing: -0.025em;
+  font-weight: 500;
+}
+
+/* Focus ring — cyan */
 *:focus-visible {
-  outline: 2px solid var(--primary);
+  outline: 2px solid var(--cyan);
   outline-offset: 2px;
 }
 
-/* Government-style scrollbar */
+/* Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--gray-100);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--gray-400);
-  border-radius: 4px;
+  background: var(--border);
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--gray-500);
+  background: var(--beige);
 }
 
-/* Skip to main content link */
+/* Skip to main */
 .skip-to-main {
   position: absolute;
   top: -100%;
   left: 0;
-  background: var(--primary);
+  background: var(--navy);
   color: var(--text-inverse);
   padding: 0.5rem 1rem;
   z-index: 9999;
   transition: top 0.2s;
+  font-size: 0.875rem;
 }
 
 .skip-to-main:focus {
   top: 0;
 }
 
-/* Reduced motion support */
+/* Reduced motion */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -141,7 +176,7 @@ body {
   }
 }
 
-/* Print styles for government documents */
+/* Print */
 @media print {
   body {
     background: white;
@@ -156,4 +191,74 @@ body {
     text-decoration: underline;
     color: black;
   }
+}
+
+/* Editorial typography utilities */
+.eyebrow {
+  font-size: 0.6875rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--muted-gray);
+}
+
+.section-number {
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--text-muted);
+  letter-spacing: 0.04em;
+}
+
+/* Editorial heading styles */
+.heading-display {
+  font-weight: 500;
+  letter-spacing: -0.035em;
+  line-height: 1.02;
+}
+
+.heading-section {
+  font-weight: 500;
+  letter-spacing: -0.025em;
+  line-height: 1.15;
+}
+
+/* Badge — editorial pill */
+.badge-editorial {
+  display: inline-flex;
+  align-items: center;
+  background: var(--orange-light);
+  color: #C8792E;
+  border: 1px solid var(--orange-border);
+  border-radius: 9999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.04em;
+}
+
+/* Dark section utility */
+.section-dark {
+  background: var(--navy);
+  color: var(--text-on-dark);
+}
+
+.section-dark-secondary {
+  color: var(--text-on-dark-secondary);
+}
+
+/* Light section utility */
+.section-light {
+  background: var(--off-white);
+  color: var(--text-primary);
+}
+
+/* Card surfaces */
+.card-dark {
+  background: var(--surface-card);
+  border: 1px solid var(--border-dark);
+}
+
+.card-light {
+  background: var(--ivory);
+  border: 1px solid var(--border);
 }

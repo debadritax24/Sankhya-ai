@@ -24,26 +24,26 @@ export default function TrainerContentPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Document</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Type</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Size</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Status</th>
-                  <th className="text-right py-3 px-2 font-medium text-gray-500">Chunks</th>
-                  <th className="text-right py-3 px-2 font-medium text-gray-500">Questions</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Uploaded</th>
+                <tr className="border-b border-[#DDDAD4]">
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Document</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Type</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Size</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Status</th>
+                  <th className="text-right py-3 px-2 font-medium text-[#77746F]">Chunks</th>
+                  <th className="text-right py-3 px-2 font-medium text-[#77746F]">Questions</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Uploaded</th>
                 </tr>
               </thead>
               <tbody>
                 {uploads.map((u) => (
-                  <tr key={u.name} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-3 px-2 font-medium text-gray-900">{u.name}</td>
-                    <td className="py-3 px-2 text-gray-500">{u.type}</td>
-                    <td className="py-3 px-2 text-gray-500">{u.size}</td>
+                  <tr key={u.name} className="border-b border-[#DDDAD4] hover:bg-[#FCFBF8]">
+                    <td className="py-3 px-2 font-medium text-[#080D2B]">{u.name}</td>
+                    <td className="py-3 px-2 text-[#77746F]">{u.type}</td>
+                    <td className="py-3 px-2 text-[#77746F]">{u.size}</td>
                     <td className="py-3 px-2"><Badge variant={u.status === "Ready" ? "success" : "secondary"}>{u.status}</Badge></td>
                     <td className="py-3 px-2 text-right">{u.chunks}</td>
                     <td className="py-3 px-2 text-right">{u.questions}</td>
-                    <td className="py-3 px-2 text-gray-500">{u.uploadedAt}</td>
+                    <td className="py-3 px-2 text-[#77746F]">{u.uploadedAt}</td>
                   </tr>
                 ))}
               </tbody>

@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Inter, Geist_Mono } from "next/font/google";
-import { ClerkProvider } from "@clerk/nextjs";
+import { Manrope, Geist_Mono } from "next/font/google";
 import { SmoothScrollProvider } from "@/components/providers/smooth-scroll-provider";
+import { UserProvider } from "@/components/providers/user-provider";
 import "./globals.css";
 
-const inter = Inter({
-  variable: "--font-inter",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
   display: "swap",
 });
@@ -48,15 +48,15 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ClerkProvider>
-        <html lang="en" className={`${inter.variable} ${geistMono.variable}`}>
-          <body className="min-h-screen bg-background text-foreground antialiased">
-            <a href="#main-content" className="skip-to-main">
-              Skip to main content
-            </a>
-            <SmoothScrollProvider>{children}</SmoothScrollProvider>
-          </body>
-        </html>
-    </ClerkProvider>
+    <UserProvider>
+      <html lang="en" className={`${manrope.variable} ${geistMono.variable}`}>
+        <body className="min-h-screen bg-background text-foreground antialiased">
+          <a href="#main-content" className="skip-to-main">
+            Skip to main content
+          </a>
+          <SmoothScrollProvider>{children}</SmoothScrollProvider>
+        </body>
+      </html>
+    </UserProvider>
   );
 }

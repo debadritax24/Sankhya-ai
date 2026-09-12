@@ -12,15 +12,15 @@ export default function ContactPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader><CardTitle className="text-lg">Technical Support</CardTitle></CardHeader>
-            <CardContent className="space-y-3 text-sm text-gray-600">
+            <CardContent className="space-y-3 text-sm text-[#77746F]">
               <p>For issues with the platform, authentication, or assessments.</p>
               <p className="font-medium">Email: support@sankhya-ai.gov.in</p>
-              <p className="text-xs text-gray-400">This is a prototype for SIH 2026. Support email is for demonstration purposes.</p>
+              <p className="text-xs text-[#8D837A]">This is a prototype for SIH 2026. Support email is for demonstration purposes.</p>
             </CardContent>
           </Card>
           <Card>
             <CardHeader><CardTitle className="text-lg">Feedback</CardTitle></CardHeader>
-            <CardContent className="space-y-3 text-sm text-gray-600">
+            <CardContent className="space-y-3 text-sm text-[#77746F]">
               <p>We welcome your feedback on improving the platform.</p>
               <p className="font-medium">Email: feedback@sankhya-ai.gov.in</p>
               <Button variant="outline" className="mt-4">Send Feedback</Button>

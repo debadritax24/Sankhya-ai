@@ -34,7 +34,7 @@ export function AdminClient({ departments, competencyDomainSummaries, deptData }
                 <div key={d.domain}>
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-sm font-medium">{d.name}</span>
-                    <span className="text-sm text-gray-500">{d.averageScore}%</span>
+                    <span className="text-sm text-[#77746F]">{d.averageScore}%</span>
                   </div>
                   <ProgressBar value={d.averageScore} />
                 </div>
@@ -54,7 +54,7 @@ export function AdminClient({ departments, competencyDomainSummaries, deptData }
                   <XAxis dataKey="name" tick={{ fontSize: 12 }} />
                   <YAxis domain={[0, 100]} tick={{ fontSize: 12 }} />
                   <Tooltip />
-                  <Bar dataKey="avgCompetency" fill="#0c2340" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="avgCompetency" fill="#080D2B" radius={[4, 4, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -69,17 +69,17 @@ export function AdminClient({ departments, competencyDomainSummaries, deptData }
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Department</th>
-                  <th className="text-right py-3 px-2 font-medium text-gray-500">Officials</th>
-                  <th className="text-right py-3 px-2 font-medium text-gray-500">Avg Competency</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Top Gap</th>
+                <tr className="border-b border-[#DDDAD4]">
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Department</th>
+                  <th className="text-right py-3 px-2 font-medium text-[#77746F]">Officials</th>
+                  <th className="text-right py-3 px-2 font-medium text-[#77746F]">Avg Competency</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Top Gap</th>
                 </tr>
               </thead>
               <tbody>
                 {departments.map((d) => (
-                  <tr key={d.id} className="border-b border-gray-100">
-                    <td className="py-3 px-2 font-medium text-gray-900">{d.name}</td>
+                  <tr key={d.id} className="border-b border-[#DDDAD4]">
+                    <td className="py-3 px-2 font-medium text-[#080D2B]">{d.name}</td>
                     <td className="py-3 px-2 text-right">{d.officialCount}</td>
                     <td className="py-3 px-2 text-right">{d.avgCompetency}%</td>
                     <td className="py-3 px-2"><Badge variant="warning">{d.topGap}</Badge></td>

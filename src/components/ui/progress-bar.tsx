@@ -6,10 +6,10 @@ import { cva, type VariantProps } from "class-variance-authority";
 const progressBarVariants = cva("h-2 rounded-full transition-all duration-500", {
   variants: {
     variant: {
-      default: "bg-primary",
-      success: "bg-success",
+      default: "bg-[#080D2B]",
+      success: "bg-[#4A7C59]",
       warning: "bg-accent",
-      error: "bg-error",
+      error: "bg-[#9B3B3B]",
       accent: "bg-accent",
     },
     size: {
@@ -39,7 +39,7 @@ export function ProgressBar({ value, max = 100, showLabel = false, variant, size
 
   return (
     <div className={cn("w-full", className)}>
-      <div className="w-full bg-gray-200 rounded-full overflow-hidden">
+      <div className="w-full bg-[#DDDAD4] rounded-full overflow-hidden">
         <div
           className={cn(progressBarVariants({ variant: variant || autoVariant, size }))}
           style={{ width: `${percentage}%` }}
@@ -50,7 +50,7 @@ export function ProgressBar({ value, max = 100, showLabel = false, variant, size
         />
       </div>
       {showLabel && (
-        <p className="mt-1 text-xs text-gray-500 text-right">{Math.round(percentage)}%</p>
+        <p className="mt-1 text-xs text-[#77746F] text-right">{Math.round(percentage)}%</p>
       )}
     </div>
   );

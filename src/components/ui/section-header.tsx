@@ -11,8 +11,8 @@ export function SectionHeader({ title, description, action, className }: Section
   return (
     <div className={cn("flex items-center justify-between mb-4", className)}>
       <div>
-        <h2 className="text-lg font-semibold text-gray-900">{title}</h2>
-        {description && <p className="mt-1 text-sm text-gray-500">{description}</p>}
+        <h2 className="text-lg font-semibold text-[#080D2B]">{title}</h2>
+        {description && <p className="mt-1 text-sm text-[#77746F]">{description}</p>}
       </div>
       {action}
     </div>

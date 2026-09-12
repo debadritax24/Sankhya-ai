@@ -20,12 +20,12 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ c
           <Card>
             <CardHeader><CardTitle className="text-lg">Course Details</CardTitle></CardHeader>
             <CardContent className="grid grid-cols-2 gap-4 text-sm">
-              <div><p className="text-gray-500">Provider</p><p className="font-medium">{course.provider}</p></div>
-              <div><p className="text-gray-500">Duration</p><p className="font-medium">{course.duration}</p></div>
-              <div><p className="text-gray-500">Level</p><p className="font-medium">{course.level}</p></div>
-              <div><p className="text-gray-500">Language</p><p className="font-medium">{course.language}</p></div>
-              <div><p className="text-gray-500">Rating</p><p className="font-medium">{course.rating}/5</p></div>
-              <div><p className="text-gray-500">Enrolled</p><p className="font-medium">{course.enrolledCount.toLocaleString()}</p></div>
+              <div><p className="text-[#77746F]">Provider</p><p className="font-medium">{course.provider}</p></div>
+              <div><p className="text-[#77746F]">Duration</p><p className="font-medium">{course.duration}</p></div>
+              <div><p className="text-[#77746F]">Level</p><p className="font-medium">{course.level}</p></div>
+              <div><p className="text-[#77746F]">Language</p><p className="font-medium">{course.language}</p></div>
+              <div><p className="text-[#77746F]">Rating</p><p className="font-medium">{course.rating}/5</p></div>
+              <div><p className="text-[#77746F]">Enrolled</p><p className="font-medium">{course.enrolledCount.toLocaleString()}</p></div>
             </CardContent>
           </Card>
 
@@ -43,11 +43,11 @@ export default async function CourseDetailPage({ params }: { params: Promise<{ c
           {course.whyRecommended && (
             <Card>
               <CardHeader><CardTitle className="text-lg">Why This Course?</CardTitle></CardHeader>
-              <CardContent className="text-sm text-gray-600">
+              <CardContent className="text-sm text-[#77746F]">
                 <p>{course.whyRecommended}</p>
                 {course.skillImpact && (
-                  <div className="mt-3 p-3 bg-gray-50 rounded-lg">
-                    <p className="text-xs font-medium text-gray-900">Skill Impact: {course.skillImpact}</p>
+                  <div className="mt-3 p-3 bg-[#FCFBF8] rounded-lg">
+                    <p className="text-xs font-medium text-[#080D2B]">Skill Impact: {course.skillImpact}</p>
                   </div>
                 )}
               </CardContent>

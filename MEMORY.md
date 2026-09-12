@@ -95,18 +95,51 @@
 - [x] Lint passes (0 warnings)
 - [x] Production build passes
 
----
+### Premium Institutional Design System
+- [x] Manrope font added to layout.tsx
+- [x] globals.css: Deep navy + warm off-white palette
+- [x] TopographicPattern component: Navy/Cyan/Beige options
+- [x] Editorial typography utilities (eyebrow, heading-display, heading-section, badge-editorial)
+- [x] Dark section utility classes
+- [x] All 14 UI primitives updated (Button, Card, Badge, Breadcrumb, PageHeader, SectionHeader, StatCard, ProgressBar, EmptyState, Skeleton, SearchInput, Sidebar, AppLayout, ClerkProvider)
+- [x] Header redesigned: Warm off-white, minimal institutional nav, custom auth
+- [x] Footer redesigned: Deep navy, editorial style
+- [x] Landing page redesigned: Deep navy hero, editorial typography, numbered sections
+- [x] All 45 page/client files updated to new palette
+- [x] Auth forms: Custom localStorage-based auth with new palette
+- [x] Chart colors: Deep navy + muted cyan
+- [x] Zero remaining gray-* classes in codebase
+- [x] Zero remaining old blue/green color references
+- [x] Zero emoji in visible UI text
+- [x] Typecheck + lint + build pass
 
-## Current UI Direction
+**PREMIUM INSTITUTIONAL — Deep Navy + Warm Off-White**
 
-**WHITE / LIGHT MINIMAL GOVERNMENT UI**
+Inspired by premium editorial design with restrained color usage and sophisticated typography.
 
-- Primary background: White (#ffffff)
-- Primary color: Government navy (#0c2340)
-- Accent: Indian saffron (#ff9933) — used sparingly
-- Success/Status: Green (#138808)
-- Text: Dark charcoal (#1a1a1a)
-- Structure: Neutral gray palette
+### Color Palette
+| Token | Hex | Usage |
+|-------|-----|-------|
+| Deep Navy | #080D2B | Dominant dark background, headings |
+| Warm Off-White | #F7F6F3 | Light sections, forms |
+| Soft Ivory | #FCFBF8 | Elevated surfaces, cards |
+| Warm Beige | #8D837A | Secondary surfaces, muted panels |
+| Muted Gray | #77746F | Secondary text |
+| Muted Cyan | #58C4C0 | Accent (restrained) |
+| Warm Orange | #F2A65A | Small badges, status indicators |
+| Light Gray | #DDDAD4 | Borders |
+
+### Typography
+- Primary: Manrope (500/600 headings, 400 body)
+- Headings: font-weight 500-600, letter-spacing -0.025em to -0.045em
+- Body: font-weight 400, line-height 1.5-1.7
+- Labels: font-size 11-14px, font-weight 500, letter-spacing 0.04-0.08em
+
+### Visual Ratio
+- ~55% Deep Navy
+- ~30% Warm Off-White / Ivory
+- ~10% Neutral Gray / Beige
+- ~5% Cyan + Warm Orange accents
 
 ---
 

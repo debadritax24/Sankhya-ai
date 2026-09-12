@@ -34,14 +34,14 @@ export default function AssessmentAttemptPage() {
                 <Badge variant="secondary">Question {currentQ + 1} of {mockQuestions.length}</Badge>
                 <Badge variant="secondary">Medium</Badge>
               </div>
-              <p className="text-lg font-medium text-gray-900 mb-6">{question.text}</p>
+              <p className="text-lg font-medium text-[#080D2B] mb-6">{question.text}</p>
               <div className="space-y-3">
                 {(Object.entries(question.options) as [string, string][]).map(([key, value]) => (
                   <button
                     key={key}
                     type="button"
                     onClick={() => handleAnswer(question.id, key)}
-                    className={`w-full text-left p-4 rounded-lg border transition-colors ${answers[question.id] === key ? "border-primary bg-primary/5" : "border-gray-200 hover:bg-gray-50"}`}
+                    className={`w-full text-left p-4 rounded-lg border transition-colors ${answers[question.id] === key ? "border-[#080D2B] bg-[#080D2B]/5" : "border-[#DDDAD4] hover:bg-[#FCFBF8]"}`}
                   >
                     <span className="font-medium mr-2">{key}.</span>
                     {value}
@@ -64,10 +64,10 @@ export default function AssessmentAttemptPage() {
         <div className="space-y-4">
           <Card>
             <CardContent className="p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Progress</h3>
+              <h3 className="text-sm font-semibold text-[#080D2B] mb-3">Progress</h3>
               <div className="flex flex-wrap gap-2">
                 {mockQuestions.map((q, i) => (
-                  <div key={q.id} className={`h-8 w-8 rounded flex items-center justify-center text-xs font-medium ${i === currentQ ? "bg-primary text-white" : answers[q.id] ? "bg-success/10 text-success" : "bg-gray-100 text-gray-500"}`}>
+                  <div key={q.id} className={`h-8 w-8 rounded flex items-center justify-center text-xs font-medium ${i === currentQ ? "bg-[#080D2B] text-white" : answers[q.id] ? "bg-[#4A7C59]/10 text-[#4A7C59]" : "bg-[#F7F6F3] text-[#77746F]"}`}>
                     {i + 1}
                   </div>
                 ))}
@@ -75,8 +75,8 @@ export default function AssessmentAttemptPage() {
             </CardContent>
           </Card>
           <Card>
-            <CardContent className="p-4 text-sm text-gray-600">
-              <p className="font-medium text-gray-900 mb-1">Timer</p>
+            <CardContent className="p-4 text-sm text-[#77746F]">
+              <p className="font-medium text-[#080D2B] mb-1">Timer</p>
               <p>25:00 remaining</p>
             </CardContent>
           </Card>

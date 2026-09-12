@@ -35,12 +35,12 @@ export function LearningClient({ courses }: { courses: any[] }) {
 
       <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <SearchInput placeholder="Search courses..." value={search} onChange={setSearch} className="flex-1" />
-        <div className="flex gap-1 bg-gray-100 p-1 rounded-lg">
+        <div className="flex gap-1 bg-[#F7F6F3] p-1 rounded-lg">
           {tabs.map((tab) => (
             <button
               key={tab.value}
               onClick={() => setActiveTab(tab.value)}
-              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${activeTab === tab.value ? "bg-white text-primary shadow-sm" : "text-gray-500 hover:text-gray-700"}`}
+              className={`px-3 py-1.5 text-xs font-medium rounded-md transition-colors ${activeTab === tab.value ? "bg-white text-[#080D2B] shadow-sm" : "text-[#77746F] hover:text-[#77746F]"}`}
             >
               {tab.name}
             </button>
@@ -54,15 +54,15 @@ export function LearningClient({ courses }: { courses: any[] }) {
             <CardContent className="p-5">
               <div className="flex items-center gap-2 mb-3">
                 <Badge variant={c.provider === "iGOT" ? "default" : c.provider === "TPAC" ? "accent" : "secondary"}>{c.provider}</Badge>
-                <span className="text-xs text-gray-500">{c.duration}</span>
-                <span className="text-xs text-gray-500">· {c.level}</span>
+                <span className="text-xs text-[#77746F]">{c.duration}</span>
+                <span className="text-xs text-[#77746F]">· {c.level}</span>
               </div>
-              <h3 className="font-semibold text-gray-900 mb-1">{c.title}</h3>
-              <p className="text-sm text-gray-500 mb-3 line-clamp-2">{c.description}</p>
+              <h3 className="font-semibold text-[#080D2B] mb-1">{c.title}</h3>
+              <p className="text-sm text-[#77746F] mb-3 line-clamp-2">{c.description}</p>
               <div className="flex flex-wrap gap-1 mb-3">
                 {c.competencyNames.map((n: string) => <Badge key={n} variant="secondary" className="text-xs">{n}</Badge>)}
               </div>
-              {c.whyRecommended && <p className="text-xs text-gray-600 italic mb-3">{c.whyRecommended}</p>}
+              {c.whyRecommended && <p className="text-xs text-[#77746F] italic mb-3">{c.whyRecommended}</p>}
               <Link href={`/learning/${c.id}`}><Button variant="outline" size="sm" className="w-full">View Course</Button></Link>
             </CardContent>
           </Card>

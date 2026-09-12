@@ -3,18 +3,18 @@ import { cva, type VariantProps } from "class-variance-authority";
 import { cn } from "@/lib/utils";
 
 const buttonVariants = cva(
-  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
+  "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md text-sm font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#080D2B] focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0",
   {
     variants: {
       variant: {
-        default: "bg-primary text-text-inverse hover:bg-primary-light",
-        destructive: "bg-error text-text-inverse hover:bg-red-700",
-        outline: "border border-gray-300 bg-white hover:bg-gray-50 text-gray-700",
-        secondary: "bg-gray-100 text-gray-900 hover:bg-gray-200",
-        ghost: "hover:bg-gray-100 text-gray-700",
-        link: "text-primary underline-offset-4 hover:underline",
+        default: "bg-[#080D2B] text-text-inverse hover:bg-primary-light",
+        destructive: "bg-[#9B3B3B] text-text-inverse hover:bg-red-700",
+        outline: "border border-[#8D837A] bg-white hover:bg-[#FCFBF8] text-[#77746F]",
+        secondary: "bg-[#F7F6F3] text-[#080D2B] hover:bg-[#DDDAD4]",
+        ghost: "hover:bg-[#F7F6F3] text-[#77746F]",
+        link: "text-[#080D2B] underline-offset-4 hover:underline",
         accent: "bg-accent text-text-inverse hover:bg-accent-dark",
-        success: "bg-success text-text-inverse hover:bg-success-dark",
+        success: "bg-[#4A7C59] text-text-inverse hover:bg-success-dark",
       },
       size: {
         default: "h-10 px-4 py-2",

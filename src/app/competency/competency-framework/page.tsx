@@ -6,12 +6,12 @@ import { Badge } from "@/components/ui/badge";
 const domains = [
   {
     name: "Statistical Methods",
-    color: "bg-primary",
+    color: "bg-[#080D2B]",
     skills: ["Survey Design", "Sampling", "National Accounts", "Price Statistics", "Labour Statistics", "Agricultural Statistics", "Industrial Statistics", "SDG Indicators", "Metadata Standards", "Data Quality Frameworks"],
   },
   {
     name: "Technical & Digital",
-    color: "bg-primary-light",
+    color: "bg-[#080D2B]",
     skills: ["Python", "R", "SQL", "Stata", "SPSS", "SAS", "GIS", "Data Visualization", "AI/ML", "Cloud Computing", "APIs", "Open Data"],
   },
   {
@@ -21,7 +21,7 @@ const domains = [
   },
   {
     name: "Behavioural & Managerial",
-    color: "bg-success",
+    color: "bg-[#4A7C59]",
     skills: ["Leadership", "Communication", "Project Management", "Ethics", "Decision Making", "Change Management"],
   },
 ];

@@ -13,9 +13,9 @@ export default function LearningProgressPage() {
       <PageHeader title="Learning Progress" description="Track your learning journey and achievements" />
 
       <div className="grid grid-cols-3 gap-4 mb-8">
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-primary">{Math.round(totalHours)}</p><p className="text-xs text-gray-500">Total Hours</p></CardContent></Card>
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-primary">{completed}</p><p className="text-xs text-gray-500">Completed</p></CardContent></Card>
-        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-primary">{learningProgress.length}</p><p className="text-xs text-gray-500">In Progress</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-[#080D2B]">{Math.round(totalHours)}</p><p className="text-xs text-[#77746F]">Total Hours</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-[#080D2B]">{completed}</p><p className="text-xs text-[#77746F]">Completed</p></CardContent></Card>
+        <Card><CardContent className="p-4 text-center"><p className="text-2xl font-bold text-[#080D2B]">{learningProgress.length}</p><p className="text-xs text-[#77746F]">In Progress</p></CardContent></Card>
       </div>
 
       <Card>
@@ -26,8 +26,8 @@ export default function LearningProgressPage() {
               <div key={lp.courseId}>
                 <div className="flex items-center justify-between mb-2">
                   <div>
-                    <h4 className="text-sm font-medium text-gray-900">{lp.courseName}</h4>
-                    <p className="text-xs text-gray-500">{lp.provider} · Last accessed: {lp.lastAccessedAt}</p>
+                    <h4 className="text-sm font-medium text-[#080D2B]">{lp.courseName}</h4>
+                    <p className="text-xs text-[#77746F]">{lp.provider} · Last accessed: {lp.lastAccessedAt}</p>
                   </div>
                   <span className="text-sm font-medium">{lp.progressPercent}%</span>
                 </div>

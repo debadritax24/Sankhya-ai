@@ -23,8 +23,8 @@ export default function AdminSettingsPage() {
             <CardContent className="p-5">
               <div className="flex items-start justify-between">
                 <div>
-                  <h3 className="font-semibold text-gray-900">{s.title}</h3>
-                  <p className="text-sm text-gray-500">{s.desc}</p>
+                  <h3 className="font-semibold text-[#080D2B]">{s.title}</h3>
+                  <p className="text-sm text-[#77746F]">{s.desc}</p>
                 </div>
                 <Badge variant={s.status === "Active" || s.status === "Configured" ? "success" : "secondary"}>{s.status}</Badge>
               </div>

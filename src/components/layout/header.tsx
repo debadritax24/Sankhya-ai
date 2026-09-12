@@ -1,43 +1,51 @@
 "use client";
 
 import Link from "next/link";
-import { Menu, X, Search, Bell } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
-import { UserButton, useUser } from "@clerk/nextjs";
+import { useUser } from "@/components/providers/user-provider";
 import { Button } from "@/components/ui/button";
 
-const publicNav = [
-  { name: "Home", href: "/" },
-  { name: "About", href: "/about" },
-  { name: "How It Works", href: "/how-it-works" },
-  { name: "Competency Framework", href: "/competency/competency-framework" },
-  { name: "Learning Ecosystem", href: "/learning/learning-ecosystem" },
-  { name: "Security", href: "/security" },
+const navLinks = [
+  { name: "Platform", href: "/about" },
+  { name: "Competencies", href: "/competency/competency-framework" },
+  { name: "Learning", href: "/learning/learning-ecosystem" },
+  { name: "Assessments", href: "/assessments" },
+  { name: "Analytics", href: "/admin/analytics" },
 ];
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const { isSignedIn, isLoaded } = useUser();
+  const { user, logout } = useUser();
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-gray-200 bg-white">
-      <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
+    <header
+      className="sticky top-0 z-50 w-full border-b"
+      style={{ backgroundColor: "#F7F6F3", borderColor: "#DDDAD4" }}
+    >
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-14 items-center justify-between">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-2">
-            <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-primary-foreground font-bold text-sm">
-              SA
-            </div>
-            <span className="text-sm font-semibold text-primary hidden sm:inline">SANKHYA AI</span>
+            <span
+              className="text-sm font-semibold tracking-wide"
+              style={{ color: "#080D2B" }}
+            >
+              SANKHYA AI
+            </span>
           </Link>
 
           {/* Desktop nav */}
-          <nav className="hidden lg:flex items-center gap-1" aria-label="Main navigation">
-            {publicNav.map((item) => (
+          <nav
+            className="hidden lg:flex items-center gap-1"
+            aria-label="Main navigation"
+          >
+            {navLinks.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="px-2.5 py-1.5 text-xs font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded transition-colors"
+                className="px-3 py-1.5 text-xs font-medium rounded transition-colors hover:bg-[#080D2B]/5"
+                style={{ color: "#77746F" }}
               >
                 {item.name}
               </Link>
@@ -46,33 +54,34 @@ export function Header() {
 
           {/* Actions */}
           <div className="flex items-center gap-2">
-            <button type="button" className="p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Search">
-              <Search className="h-4 w-4" />
-            </button>
-            {isLoaded && isSignedIn && (
-              <>
-                <Link href="/dashboard/notifications" className="relative p-2 text-gray-400 hover:text-gray-600 rounded transition-colors" aria-label="Notifications">
-                  <Bell className="h-4 w-4" />
-                  <span className="absolute top-1 right-1 h-1.5 w-1.5 rounded-full bg-accent" />
+            {user && (
+              <div className="flex items-center gap-3 pl-3 border-l" style={{ borderColor: "#DDDAD4" }}>
+                <Link href="/dashboard/profile" className="text-xs font-medium" style={{ color: "#77746F" }}>
+                  {user.name.split(" ")[0]}
                 </Link>
-                <div className="flex items-center gap-2 pl-2 border-l border-gray-200">
-                  <UserButton />
-                </div>
-              </>
+                <button onClick={logout} className="text-xs font-medium hover:underline" style={{ color: "#77746F" }}>
+                  Logout
+                </button>
+              </div>
             )}
-            {isLoaded && !isSignedIn && (
+            {!user && (
               <div className="flex items-center gap-2">
                 <Link href="/sign-in">
-                  <Button variant="ghost" size="sm">Sign In</Button>
+                  <Button variant="ghost" size="sm">
+                    Sign In
+                  </Button>
                 </Link>
                 <Link href="/sign-up">
-                  <Button size="sm">Get Started</Button>
+                  <Button size="sm">
+                    Get Started
+                  </Button>
                 </Link>
               </div>
             )}
             <button
               type="button"
-              className="lg:hidden p-2 text-gray-400 hover:text-gray-600 rounded"
+              className="lg:hidden p-2 rounded"
+              style={{ color: "#77746F" }}
               onClick={() => setMobileOpen(!mobileOpen)}
               aria-label="Toggle menu"
             >
@@ -83,12 +92,17 @@ export function Header() {
 
         {/* Mobile nav */}
         {mobileOpen && (
-          <nav className="lg:hidden py-2 border-t border-gray-100" aria-label="Mobile navigation">
-            {publicNav.map((item) => (
+          <nav
+            className="lg:hidden py-2 border-t"
+            style={{ borderColor: "#DDDAD4" }}
+            aria-label="Mobile navigation"
+          >
+            {navLinks.map((item) => (
               <Link
                 key={item.name}
                 href={item.href}
-                className="block px-3 py-2 text-sm font-medium text-gray-600 hover:text-primary hover:bg-gray-50 rounded"
+                className="block px-3 py-2 text-sm font-medium rounded"
+                style={{ color: "#77746F" }}
                 onClick={() => setMobileOpen(false)}
               >
                 {item.name}

@@ -15,8 +15,8 @@ export default function LearningEcosystemPage() {
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 text-center">
               {["Official", "Skill Profile", "Recommendation Engine", "iGOT Karmayogi + NSSTA/TPAC", "Learning", "Assessment", "Competency Update"].map((step, i) => (
                 <div key={step} className="flex items-center gap-4">
-                  <div className="px-4 py-2 rounded-lg bg-primary/10 text-primary font-medium text-sm">{step}</div>
-                  {i < 6 && <span className="text-gray-400 hidden md:inline">→</span>}
+                  <div className="px-4 py-2 rounded-lg bg-[#080D2B]/10 text-[#080D2B] font-medium text-sm">{step}</div>
+                  {i < 6 && <span className="text-[#8D837A] hidden md:inline">→</span>}
                 </div>
               ))}
             </div>
@@ -31,9 +31,9 @@ export default function LearningEcosystemPage() {
                 <Badge variant="success">Integration Ready</Badge>
               </div>
             </CardHeader>
-            <CardContent className="text-sm text-gray-600 space-y-2">
+            <CardContent className="text-sm text-[#77746F] space-y-2">
               <p>iGOT Karmayogi is India&apos;s official learning platform for government officials. SANKHYA AI connects to iGOT through an adapter architecture.</p>
-              <p className="text-xs text-gray-400 mt-2">⚠️ Prototype: Uses mock course data. Live API integration requires official credentials.</p>
+              <p className="text-xs text-[#8D837A] mt-2">Prototype: Uses mock course data. Live API integration requires official credentials.</p>
             </CardContent>
           </Card>
 
@@ -44,9 +44,9 @@ export default function LearningEcosystemPage() {
                 <Badge variant="success">Integration Ready</Badge>
               </div>
             </CardHeader>
-            <CardContent className="text-sm text-gray-600 space-y-2">
+            <CardContent className="text-sm text-[#77746F] space-y-2">
               <p>NSSTA (National Statistical Systems Training Academy) and TPAC provide specialized training programmes for official statistics.</p>
-              <p className="text-xs text-gray-400 mt-2">⚠️ Prototype: Uses mock programme data. Live integration requires NSSTA cooperation.</p>
+              <p className="text-xs text-[#8D837A] mt-2">Prototype: Uses mock programme data. Live integration requires NSSTA cooperation.</p>
             </CardContent>
           </Card>
         </div>

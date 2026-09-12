@@ -29,8 +29,8 @@ export function SkillDNAClient({ competencies, radarData }: { competencies: any[
                   <PolarGrid stroke="#e9ecef" />
                   <PolarAngleAxis dataKey="skill" tick={{ fontSize: 12, fill: "#495057" }} />
                   <PolarRadiusAxis angle={30} domain={[0, 100]} tick={{ fontSize: 10 }} />
-                  <Radar name="Current" dataKey="current" stroke="#0c2340" fill="#0c2340" fillOpacity={0.3} />
-                  <Radar name="Required" dataKey="required" stroke="#ff9933" fill="#ff9933" fillOpacity={0.15} />
+                  <Radar name="Current" dataKey="current" stroke="#080D2B" fill="#080D2B" fillOpacity={0.3} />
+                  <Radar name="Required" dataKey="required" stroke="#F2A65A" fill="#F2A65A" fillOpacity={0.15} />
                   <Legend />
                 </RadarChart>
               </ResponsiveContainer>
@@ -42,30 +42,30 @@ export function SkillDNAClient({ competencies, radarData }: { competencies: any[
         <Card>
           <CardHeader><CardTitle className="text-lg">Skill DNA Summary</CardTitle></CardHeader>
           <CardContent className="space-y-4">
-            <div className="text-center p-4 bg-gray-50 rounded-lg">
-              <p className="text-sm text-gray-500">Overall Readiness</p>
-              <p className="text-4xl font-bold text-primary">68%</p>
+            <div className="text-center p-4 bg-[#FCFBF8] rounded-lg">
+              <p className="text-sm text-[#77746F]">Overall Readiness</p>
+              <p className="text-4xl font-bold text-[#080D2B]">68%</p>
             </div>
             <div className="space-y-3">
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Total Skills</span>
+                <span className="text-[#77746F]">Total Skills</span>
                 <span className="font-medium">12</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">At/Above Required</span>
-                <span className="font-medium text-success">4</span>
+                <span className="text-[#77746F]">At/Above Required</span>
+                <span className="font-medium text-[#4A7C59]">4</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Below Required</span>
+                <span className="text-[#77746F]">Below Required</span>
                 <span className="font-medium text-warning">6</span>
               </div>
               <div className="flex justify-between text-sm">
-                <span className="text-gray-600">Critical Gaps</span>
-                <span className="font-medium text-error">2</span>
+                <span className="text-[#77746F]">Critical Gaps</span>
+                <span className="font-medium text-[#9B3B3B]">2</span>
               </div>
             </div>
-            <div className="p-3 bg-gray-50 rounded-lg text-xs text-gray-600">
-              <p className="font-medium text-gray-900 mb-1">Evidence Sources</p>
+            <div className="p-3 bg-[#FCFBF8] rounded-lg text-xs text-[#77746F]">
+              <p className="font-medium text-[#080D2B] mb-1">Evidence Sources</p>
               <p>Diagnostic assessments, training history, work experience, profile inference</p>
             </div>
           </CardContent>
@@ -83,8 +83,8 @@ export function SkillDNAClient({ competencies, radarData }: { competencies: any[
                 <div className="flex-1">
                   <div className="flex items-center gap-2">
                     <div className="flex-1 relative">
-                      <div className="h-2 bg-gray-200 rounded-full">
-                        <div className="h-2 bg-primary rounded-full" style={{ width: `${c.currentScore}%` }} />
+                      <div className="h-2 bg-[#DDDAD4] rounded-full">
+                        <div className="h-2 bg-[#080D2B] rounded-full" style={{ width: `${c.currentScore}%` }} />
                       </div>
                       <div className="absolute top-0 h-2 border-r-2 border-dashed border-accent" style={{ left: `${c.requiredScore}%` }} />
                     </div>
@@ -92,7 +92,7 @@ export function SkillDNAClient({ competencies, radarData }: { competencies: any[
                 </div>
                 <div className="w-24 text-right text-sm">
                   <span className="font-medium">{c.currentScore}</span>
-                  <span className="text-gray-400"> / {c.requiredScore}</span>
+                  <span className="text-[#8D837A]"> / {c.requiredScore}</span>
                 </div>
                 <Badge variant={c.priority === "CRITICAL" ? "error" : c.priority === "HIGH" ? "warning" : c.priority === "MEDIUM" ? "accent" : "success"}>
                   {c.priority}

@@ -15,19 +15,19 @@ export default function AdminWorkforcePage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Department</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Code</th>
-                  <th className="text-right py-3 px-2 font-medium text-gray-500">Officials</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Avg Competency</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Top Gap</th>
+                <tr className="border-b border-[#DDDAD4]">
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Department</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Code</th>
+                  <th className="text-right py-3 px-2 font-medium text-[#77746F]">Officials</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Avg Competency</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Top Gap</th>
                 </tr>
               </thead>
               <tbody>
                 {departments.map((d) => (
-                  <tr key={d.id} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-3 px-2 font-medium text-gray-900">{d.name}</td>
-                    <td className="py-3 px-2 text-gray-500">{d.code}</td>
+                  <tr key={d.id} className="border-b border-[#DDDAD4] hover:bg-[#FCFBF8]">
+                    <td className="py-3 px-2 font-medium text-[#080D2B]">{d.name}</td>
+                    <td className="py-3 px-2 text-[#77746F]">{d.code}</td>
                     <td className="py-3 px-2 text-right">{d.officialCount}</td>
                     <td className="py-3 px-2">
                       <div className="flex items-center gap-2">

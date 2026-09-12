@@ -14,10 +14,10 @@ export default function AdminCompetenciesPage() {
         {competencyDomainSummaries.map((d) => (
           <Card key={d.domain}>
             <CardContent className="p-5">
-              <h3 className="text-sm font-semibold text-gray-900 mb-2">{d.name}</h3>
-              <p className="text-3xl font-bold text-primary mb-2">{d.averageScore}%</p>
+              <h3 className="text-sm font-semibold text-[#080D2B] mb-2">{d.name}</h3>
+              <p className="text-3xl font-bold text-[#080D2B] mb-2">{d.averageScore}%</p>
               <ProgressBar value={d.averageScore} />
-              <div className="flex justify-between mt-2 text-xs text-gray-500">
+              <div className="flex justify-between mt-2 text-xs text-[#77746F]">
                 <span>{d.skillCount} skills</span>
                 <span>Gap: {d.gap > 0 ? d.gap : 0}</span>
               </div>
@@ -34,7 +34,7 @@ export default function AdminCompetenciesPage() {
               <div key={c.id} className="flex items-center gap-4">
                 <div className="w-32 text-sm font-medium">{c.name}</div>
                 <div className="flex-1"><ProgressBar value={c.currentScore} /></div>
-                <div className="w-20 text-right text-sm text-gray-500">{c.currentScore}%</div>
+                <div className="w-20 text-right text-sm text-[#77746F]">{c.currentScore}%</div>
                 <Badge variant={c.priority === "CRITICAL" ? "error" : c.priority === "HIGH" ? "warning" : "secondary"}>{c.priority}</Badge>
               </div>
             ))}

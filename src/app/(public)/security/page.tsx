@@ -26,8 +26,8 @@ export default function SecurityPage() {
               <CardContent className="p-6">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="font-semibold text-gray-900">{f.title}</h3>
-                    <p className="mt-1 text-sm text-gray-600">{f.desc}</p>
+                    <h3 className="font-semibold text-[#080D2B]">{f.title}</h3>
+                    <p className="mt-1 text-sm text-[#77746F]">{f.desc}</p>
                   </div>
                   <Badge variant={f.status === "Active" ? "success" : "secondary"}>{f.status}</Badge>
                 </div>

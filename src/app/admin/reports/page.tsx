@@ -24,8 +24,8 @@ export default function AdminReportsPage() {
           <Card key={r.name}>
             <CardContent className="p-5 flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-gray-900">{r.name}</h3>
-                <p className="text-sm text-gray-500">{r.desc}</p>
+                <h3 className="font-semibold text-[#080D2B]">{r.name}</h3>
+                <p className="text-sm text-[#77746F]">{r.desc}</p>
               </div>
               <div className="flex items-center gap-3">
                 <Badge variant="success">{r.status}</Badge>

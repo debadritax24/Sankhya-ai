@@ -16,7 +16,7 @@ export default function AssessmentsPage() {
 
       {/* Upcoming / Recommended */}
       <div className="mb-8">
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Available Assessments</h2>
+        <h2 className="text-lg font-semibold text-[#080D2B] mb-4">Available Assessments</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {upcoming.map((a) => (
             <Card key={a.id} className="hover:shadow-md transition-shadow">
@@ -25,9 +25,9 @@ export default function AssessmentsPage() {
                   <Badge variant={a.status === "recommended" ? "accent" : "default"}>{a.status}</Badge>
                   <Badge variant="secondary">{a.difficulty}</Badge>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">{a.title}</h3>
-                <p className="text-sm text-gray-500 mb-3">{a.questionCount} questions · {a.durationMinutes} min · {a.competencyName}</p>
-                {a.reason && <p className="text-xs text-gray-600 italic mb-3">{a.reason}</p>}
+                <h3 className="font-semibold text-[#080D2B] mb-1">{a.title}</h3>
+                <p className="text-sm text-[#77746F] mb-3">{a.questionCount} questions · {a.durationMinutes} min · {a.competencyName}</p>
+                {a.reason && <p className="text-xs text-[#77746F] italic mb-3">{a.reason}</p>}
                 <Button variant="outline" size="sm" className="w-full">Start Assessment</Button>
               </CardContent>
             </Card>
@@ -37,7 +37,7 @@ export default function AssessmentsPage() {
 
       {/* Completed */}
       <div>
-        <h2 className="text-lg font-semibold text-gray-900 mb-4">Completed Assessments</h2>
+        <h2 className="text-lg font-semibold text-[#080D2B] mb-4">Completed Assessments</h2>
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {completed.map((a) => (
             <Card key={a.id}>
@@ -46,12 +46,12 @@ export default function AssessmentsPage() {
                   <Badge variant="success">Completed</Badge>
                   <Badge variant="secondary">{a.difficulty}</Badge>
                 </div>
-                <h3 className="font-semibold text-gray-900 mb-1">{a.title}</h3>
-                <p className="text-sm text-gray-500 mb-2">{a.competencyName} · {a.completedAt}</p>
+                <h3 className="font-semibold text-[#080D2B] mb-1">{a.title}</h3>
+                <p className="text-sm text-[#77746F] mb-2">{a.competencyName} · {a.completedAt}</p>
                 <div className="flex items-center gap-4">
                   <div className="text-center">
-                    <p className="text-xl font-bold text-primary">{a.score}%</p>
-                    <p className="text-xs text-gray-500">Score</p>
+                    <p className="text-xl font-bold text-[#080D2B]">{a.score}%</p>
+                    <p className="text-xs text-[#77746F]">Score</p>
                   </div>
                   <Badge variant={a.passed ? "success" : "error"}>{a.passed ? "Passed" : "Failed"}</Badge>
                 </div>

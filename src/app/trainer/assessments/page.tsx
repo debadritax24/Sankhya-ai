@@ -23,8 +23,8 @@ export default function TrainerAssessmentsPage() {
           <Card key={a.id}>
             <CardContent className="p-5 flex items-center justify-between">
               <div>
-                <h3 className="font-semibold text-gray-900">{a.title}</h3>
-                <p className="text-sm text-gray-500">{a.questions} questions · Generated: {a.generated}</p>
+                <h3 className="font-semibold text-[#080D2B]">{a.title}</h3>
+                <p className="text-sm text-[#77746F]">{a.questions} questions · Generated: {a.generated}</p>
               </div>
               <div className="flex items-center gap-3">
                 <Badge variant={a.status === "Published" ? "success" : a.status === "Review" ? "warning" : "secondary"}>{a.status}</Badge>

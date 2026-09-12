@@ -18,19 +18,19 @@ export default function CareerPathPage() {
           <CardContent>
             <div className="flex items-center justify-between">
               <div className="text-center p-4">
-                <p className="text-xs text-gray-500 mb-1">Current Role</p>
-                <p className="font-semibold text-gray-900">&quot;Senior Statistical Officer&quot;</p>
+                <p className="text-xs text-[#77746F] mb-1">Current Role</p>
+                <p className="font-semibold text-[#080D2B]">&quot;Senior Statistical Officer&quot;</p>
                 <Badge variant="secondary" className="mt-2">Level 7</Badge>
               </div>
               <div className="flex-1 px-8">
-                <div className="h-0.5 bg-gray-200 relative">
-                  <div className="absolute left-0 top-0 h-full bg-primary" style={{ width: "45%" }} />
+                <div className="h-0.5 bg-[#DDDAD4] relative">
+                  <div className="absolute left-0 top-0 h-full bg-[#080D2B]" style={{ width: "45%" }} />
                 </div>
-                <p className="text-xs text-gray-500 text-center mt-2">Career Readiness: 45%</p>
+                <p className="text-xs text-[#77746F] text-center mt-2">Career Readiness: 45%</p>
               </div>
               <div className="text-center p-4">
-                <p className="text-xs text-gray-500 mb-1">Target Role</p>
-                <p className="font-semibold text-primary">Senior Statistical Officer</p>
+                <p className="text-xs text-[#77746F] mb-1">Target Role</p>
+                <p className="font-semibold text-[#080D2B]">Senior Statistical Officer</p>
                 <Badge variant="accent" className="mt-2">Level 9</Badge>
               </div>
             </div>
@@ -41,9 +41,9 @@ export default function CareerPathPage() {
         <Card>
           <CardHeader><CardTitle className="text-lg">Readiness Score</CardTitle></CardHeader>
           <CardContent className="text-center">
-            <p className="text-5xl font-bold text-primary">45%</p>
-            <p className="text-sm text-gray-500 mt-2">Overall career readiness</p>
-            <p className="text-xs text-gray-400 mt-4">Based on your current competencies vs target role requirements</p>
+            <p className="text-5xl font-bold text-[#080D2B]">45%</p>
+            <p className="text-sm text-[#77746F] mt-2">Overall career readiness</p>
+            <p className="text-xs text-[#8D837A] mt-4">Based on your current competencies vs target role requirements</p>
           </CardContent>
         </Card>
       </div>
@@ -54,10 +54,10 @@ export default function CareerPathPage() {
         <CardContent>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {competencyDomainSummaries.map((d) => (
-              <div key={d.domain} className="border border-gray-200 rounded-lg p-4">
-                <h4 className="text-sm font-medium text-gray-900 mb-2">{d.name}</h4>
+              <div key={d.domain} className="border border-[#DDDAD4] rounded-lg p-4">
+                <h4 className="text-sm font-medium text-[#080D2B] mb-2">{d.name}</h4>
                 <ProgressBar value={d.averageScore} />
-                <div className="flex justify-between mt-2 text-xs text-gray-500">
+                <div className="flex justify-between mt-2 text-xs text-[#77746F]">
                   <span>Current: {d.averageScore}%</span>
                   <span>Required: {d.requiredScore + 5}%</span>
                 </div>
@@ -76,7 +76,7 @@ export default function CareerPathPage() {
               <div key={g.id} className="flex items-center gap-4">
                 <div className="w-32 text-sm font-medium">{g.skillName}</div>
                 <div className="flex-1"><ProgressBar value={g.currentLevel} /></div>
-                <div className="w-24 text-right text-xs text-gray-500">{g.currentLevel}% → {g.requiredLevel + 10}%</div>
+                <div className="w-24 text-right text-xs text-[#77746F]">{g.currentLevel}% → {g.requiredLevel + 10}%</div>
                 <Badge variant={g.futureDemandWeight > 0.7 ? "error" : "secondary"}>{Math.round(g.futureDemandWeight * 100)}% demand</Badge>
               </div>
             ))}

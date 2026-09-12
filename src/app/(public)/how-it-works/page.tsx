@@ -25,13 +25,13 @@ export default function HowItWorksPage() {
             <Card key={step.num}>
               <CardContent className="p-6">
                 <div className="flex items-start gap-6">
-                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-primary text-text-inverse font-bold text-lg flex-shrink-0">
+                  <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#080D2B] text-text-inverse font-bold text-lg flex-shrink-0">
                     {step.num}
                   </div>
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-900">{step.title}</h3>
-                    <p className="mt-1 text-gray-600">{step.desc}</p>
-                    <p className="mt-2 text-sm text-gray-500">{step.detail}</p>
+                    <h3 className="text-lg font-semibold text-[#080D2B]">{step.title}</h3>
+                    <p className="mt-1 text-[#77746F]">{step.desc}</p>
+                    <p className="mt-2 text-sm text-[#77746F]">{step.detail}</p>
                   </div>
                 </div>
               </CardContent>

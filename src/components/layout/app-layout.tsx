@@ -19,7 +19,7 @@ export function AppLayout({ children, breadcrumbs, role = "learner" }: AppLayout
   return (
     <div className="flex min-h-screen flex-col">
       {/* Top government bar */}
-      <div className="bg-primary text-text-inverse">
+      <div className="bg-[#080D2B] text-text-inverse">
         <div className="mx-auto max-w-full px-4 sm:px-6 lg:px-8">
           <div className="flex h-8 items-center justify-between text-xs">
             <div className="flex items-center gap-4">

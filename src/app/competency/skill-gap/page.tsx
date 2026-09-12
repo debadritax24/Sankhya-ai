@@ -20,7 +20,7 @@ export default function SkillGapPage() {
         return (
           <div key={priority} className="mb-8">
             <div className="flex items-center gap-3 mb-4">
-              <h2 className="text-lg font-semibold text-gray-900">{priority} Priority</h2>
+              <h2 className="text-lg font-semibold text-[#080D2B]">{priority} Priority</h2>
               <Badge variant={priority === "CRITICAL" ? "error" : priority === "HIGH" ? "warning" : "accent"}>{gaps.length}</Badge>
             </div>
             <div className="grid gap-4">
@@ -31,19 +31,19 @@ export default function SkillGapPage() {
                       <div className="flex flex-col md:flex-row md:items-center gap-4">
                         <div className="flex-1">
                           <div className="flex items-center gap-2 mb-1">
-                            <h3 className="font-semibold text-gray-900">{g.skillName}</h3>
+                            <h3 className="font-semibold text-[#080D2B]">{g.skillName}</h3>
                             <Badge variant={priority === "CRITICAL" ? "error" : priority === "HIGH" ? "warning" : "accent"}>{g.priority}</Badge>
                           </div>
-                          <p className="text-sm text-gray-500 mb-2">{g.reason}</p>
+                          <p className="text-sm text-[#77746F] mb-2">{g.reason}</p>
                           <div className="flex items-center gap-6 text-sm">
                             <span>Current: <strong>{g.currentLevel}%</strong></span>
                             <span>Required: <strong>{g.requiredLevel}%</strong></span>
-                            <span>Gap: <strong className="text-error">{g.gap} points</strong></span>
+                            <span>Gap: <strong className="text-[#9B3B3B]">{g.gap} points</strong></span>
                           </div>
                         </div>
                         <div className="w-full md:w-48">
                           <ProgressBar value={g.currentLevel} />
-                          <p className="text-xs text-gray-500 mt-1 text-center">{g.currentLevel} / {g.requiredLevel}</p>
+                          <p className="text-xs text-[#77746F] mt-1 text-center">{g.currentLevel} / {g.requiredLevel}</p>
                         </div>
                         <Button variant="outline" size="sm">View Path</Button>
                       </div>

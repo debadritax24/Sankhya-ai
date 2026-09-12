@@ -60,7 +60,7 @@ export function Sidebar({ role = "learner" }: SidebarProps) {
   return (
     <aside
       className={cn(
-        "hidden lg:flex flex-col border-r border-gray-200 bg-white transition-all duration-300",
+        "hidden lg:flex flex-col border-r border-[#DDDAD4] bg-white transition-all duration-300",
         collapsed ? "w-16" : "w-64"
       )}
     >
@@ -75,8 +75,8 @@ export function Sidebar({ role = "learner" }: SidebarProps) {
                 className={cn(
                   "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors",
                   isActive
-                    ? "bg-primary/10 text-primary"
-                    : "text-gray-600 hover:bg-gray-50 hover:text-gray-900"
+                    ? "bg-[#080D2B]/10 text-[#080D2B]"
+                    : "text-[#77746F] hover:bg-[#FCFBF8] hover:text-[#080D2B]"
                 )}
                 title={collapsed ? item.name : undefined}
               >
@@ -88,11 +88,11 @@ export function Sidebar({ role = "learner" }: SidebarProps) {
         </nav>
       </div>
 
-      <div className="border-t border-gray-200 p-3">
+      <div className="border-t border-[#DDDAD4] p-3">
         <button
           type="button"
           onClick={() => setCollapsed(!collapsed)}
-          className="flex w-full items-center justify-center rounded-md p-2 text-gray-400 hover:text-gray-600 hover:bg-gray-50 transition-colors"
+          className="flex w-full items-center justify-center rounded-md p-2 text-[#8D837A] hover:text-[#77746F] hover:bg-[#FCFBF8] transition-colors"
           aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
           {collapsed ? <ChevronRight className="h-4 w-4" /> : <ChevronLeft className="h-4 w-4" />}

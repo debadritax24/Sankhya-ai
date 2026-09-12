@@ -11,7 +11,7 @@ export default function AboutPage() {
         <div className="grid gap-8 md:grid-cols-2">
           <Card>
             <CardHeader><CardTitle className="text-lg">The Problem</CardTitle></CardHeader>
-            <CardContent className="space-y-3 text-sm text-gray-600">
+            <CardContent className="space-y-3 text-sm text-[#77746F]">
               <p>India&apos;s official statistical workforce lacks a unified system to:</p>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Understand current competency levels across departments</li>
@@ -25,7 +25,7 @@ export default function AboutPage() {
 
           <Card>
             <CardHeader><CardTitle className="text-lg">Our Solution</CardTitle></CardHeader>
-            <CardContent className="space-y-3 text-sm text-gray-600">
+            <CardContent className="space-y-3 text-sm text-[#77746F]">
               <p>SANKHYA AI provides an AI-powered platform that:</p>
               <ul className="list-disc pl-5 space-y-1">
                 <li>Builds evidence-based competency profiles using multi-signal scoring</li>
@@ -39,7 +39,7 @@ export default function AboutPage() {
 
           <Card>
             <CardHeader><CardTitle className="text-lg">Target Users</CardTitle></CardHeader>
-            <CardContent className="text-sm text-gray-600 space-y-2">
+            <CardContent className="text-sm text-[#77746F] space-y-2">
               <p><strong>Statistical Officials:</strong> Take assessments, view recommendations, complete courses</p>
               <p><strong>Training Administrators:</strong> Create assessments, manage content, view engagement</p>
               <p><strong>Department Heads:</strong> View department-wide skill gaps, plan training budgets</p>
@@ -49,9 +49,9 @@ export default function AboutPage() {
 
           <Card>
             <CardHeader><CardTitle className="text-lg">Platform Vision</CardTitle></CardHeader>
-            <CardContent className="text-sm text-gray-600 space-y-2">
+            <CardContent className="text-sm text-[#77746F] space-y-2">
               <p>A continuous competency-to-workforce intelligence loop:</p>
-              <p className="font-mono text-xs bg-gray-50 p-3 rounded">
+              <p className="font-mono text-xs bg-[#FCFBF8] p-3 rounded">
                 Profile → Competency → Skill Gap → Recommendation → Learning → Assessment → Performance → Competency Update → New Recommendation
               </p>
               <p>This closed learning loop is the core differentiator — not just a course catalogue, but a personal trainer for professional skills.</p>
@@ -62,7 +62,7 @@ export default function AboutPage() {
         <div className="mt-12">
           <Card>
             <CardHeader><CardTitle className="text-lg">Role in Capacity Building</CardTitle></CardHeader>
-            <CardContent className="text-sm text-gray-600">
+            <CardContent className="text-sm text-[#77746F]">
               <p>SANKHYA AI supports India&apos;s official statistics capacity building by providing a data-driven approach to workforce development. It connects individual competency growth with organizational capability requirements, ensuring that training investments are targeted, measurable, and aligned with future skill demands.</p>
             </CardContent>
           </Card>

@@ -12,12 +12,12 @@ export function ClerkProvider({ children }: ClerkProviderProps) {
     <ClerkReactProvider
       appearance={{
         variables: {
-          colorPrimary: "#0c2340",
+          colorPrimary: "#080D2B",
           colorBackground: "#ffffff",
         },
         elements: {
           formButtonPrimary: "bg-primary text-text-inverse hover:bg-primary-light",
-          card: "shadow-sm border border-gray-200",
+          card: "shadow-sm border border-[#DDDAD4]",
         },
       }}
     >

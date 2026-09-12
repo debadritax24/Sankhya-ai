@@ -13,16 +13,16 @@ export default function HelpPage() {
         <div className="grid gap-6 md:grid-cols-2">
           <Card>
             <CardHeader><CardTitle className="text-lg">Frequently Asked Questions</CardTitle></CardHeader>
-            <CardContent className="space-y-4 text-sm text-gray-600">
-              <div><p className="font-medium text-gray-900">What is SANKHYA AI?</p><p>An AI-powered skill intelligence platform for India&apos;s official statistics workforce.</p></div>
-              <div><p className="font-medium text-gray-900">How do I get started?</p><p>Sign up, complete your profile, and the system will assess your competencies.</p></div>
-              <div><p className="font-medium text-gray-900">Are the courses real?</p><p>The platform connects to iGOT Karmayogi and TPAC. During prototype phase, mock data is used.</p></div>
+            <CardContent className="space-y-4 text-sm text-[#77746F]">
+              <div><p className="font-medium text-[#080D2B]">What is SANKHYA AI?</p><p>An AI-powered skill intelligence platform for India&apos;s official statistics workforce.</p></div>
+              <div><p className="font-medium text-[#080D2B]">How do I get started?</p><p>Sign up, complete your profile, and the system will assess your competencies.</p></div>
+              <div><p className="font-medium text-[#080D2B]">Are the courses real?</p><p>The platform connects to iGOT Karmayogi and TPAC. During prototype phase, mock data is used.</p></div>
             </CardContent>
           </Card>
           <Card>
             <CardHeader><CardTitle className="text-lg">Contact Support</CardTitle></CardHeader>
             <CardContent className="space-y-4">
-              <p className="text-sm text-gray-600">For technical assistance or feedback, reach out to the development team.</p>
+              <p className="text-sm text-[#77746F]">For technical assistance or feedback, reach out to the development team.</p>
               <Link href="/contact"><Button variant="outline">Contact Us</Button></Link>
             </CardContent>
           </Card>

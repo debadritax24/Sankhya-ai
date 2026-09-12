@@ -25,18 +25,18 @@ export default function AdminEmergingSkillsPage() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Skill</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Org Current</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Future Demand</th>
-                  <th className="text-right py-3 px-2 font-medium text-gray-500">Gap</th>
-                  <th className="text-left py-3 px-2 font-medium text-gray-500">Priority</th>
+                <tr className="border-b border-[#DDDAD4]">
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Skill</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Org Current</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Future Demand</th>
+                  <th className="text-right py-3 px-2 font-medium text-[#77746F]">Gap</th>
+                  <th className="text-left py-3 px-2 font-medium text-[#77746F]">Priority</th>
                 </tr>
               </thead>
               <tbody>
                 {emergingSkills.map((s) => (
-                  <tr key={s.name} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-3 px-2 font-medium text-gray-900">{s.name}</td>
+                  <tr key={s.name} className="border-b border-[#DDDAD4] hover:bg-[#FCFBF8]">
+                    <td className="py-3 px-2 font-medium text-[#080D2B]">{s.name}</td>
                     <td className="py-3 px-2">
                       <div className="flex items-center gap-2">
                         <ProgressBar value={s.currentOrg} className="w-20" size="sm" />
@@ -49,14 +49,14 @@ export default function AdminEmergingSkillsPage() {
                         <span className="text-xs">{s.futureDemand}%</span>
                       </div>
                     </td>
-                    <td className="py-3 px-2 text-right font-medium text-error">{s.gap}%</td>
+                    <td className="py-3 px-2 text-right font-medium text-[#9B3B3B]">{s.gap}%</td>
                     <td className="py-3 px-2"><Badge variant={s.priority === "CRITICAL" ? "error" : s.priority === "HIGH" ? "warning" : "accent"}>{s.priority}</Badge></td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
-          <p className="mt-4 text-xs text-gray-400">⚠️ Prototype: Demand projections are configured estimates, not official government forecasts.</p>
+          <p className="mt-4 text-xs text-[#8D837A]">Prototype: Demand projections are configured estimates, not official government forecasts.</p>
         </CardContent>
       </Card>
     </AppLayout>

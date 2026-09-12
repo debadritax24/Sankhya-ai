@@ -29,13 +29,13 @@ const footerLinks = {
 
 export function Footer() {
   return (
-    <footer className="bg-gray-50 border-t border-gray-200" role="contentinfo">
+    <footer className="bg-[#FCFBF8] border-t border-[#DDDAD4]" role="contentinfo">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         {/* Main footer content */}
         <div className="py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
           {/* Platform links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-semibold text-[#080D2B] mb-4">
               Platform
             </h3>
             <ul className="space-y-3">
@@ -43,7 +43,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    className="text-sm text-[#77746F] hover:text-[#080D2B] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -54,7 +54,7 @@ export function Footer() {
 
           {/* Resources links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-semibold text-[#080D2B] mb-4">
               Resources
             </h3>
             <ul className="space-y-3">
@@ -62,7 +62,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    className="text-sm text-[#77746F] hover:text-[#080D2B] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -73,7 +73,7 @@ export function Footer() {
 
           {/* Support links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-semibold text-[#080D2B] mb-4">
               Support
             </h3>
             <ul className="space-y-3">
@@ -81,7 +81,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    className="text-sm text-[#77746F] hover:text-[#080D2B] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -92,7 +92,7 @@ export function Footer() {
 
           {/* Legal links */}
           <div>
-            <h3 className="text-sm font-semibold text-gray-900 mb-4">
+            <h3 className="text-sm font-semibold text-[#080D2B] mb-4">
               Legal
             </h3>
             <ul className="space-y-3">
@@ -100,7 +100,7 @@ export function Footer() {
                 <li key={link.name}>
                   <Link
                     href={link.href}
-                    className="text-sm text-gray-600 hover:text-primary transition-colors"
+                    className="text-sm text-[#77746F] hover:text-[#080D2B] transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -111,18 +111,18 @@ export function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="py-6 border-t border-gray-200">
+        <div className="py-6 border-t border-[#DDDAD4]">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Government identity */}
             <div className="flex items-center gap-3">
-              <div className="flex h-8 w-8 items-center justify-center rounded bg-primary text-text-inverse font-bold text-sm">
+              <div className="flex h-8 w-8 items-center justify-center rounded bg-[#080D2B] text-text-inverse font-bold text-sm">
                 SA
               </div>
               <div>
-                <div className="text-sm font-medium text-gray-900">
+                <div className="text-sm font-medium text-[#080D2B]">
                   SANKHYA AI
                 </div>
-                <div className="text-xs text-gray-500">
+                <div className="text-xs text-[#77746F]">
                   Prototype for Official Statistics Capacity Building
                 </div>
               </div>
@@ -130,10 +130,10 @@ export function Footer() {
 
             {/* Copyright */}
             <div className="text-center md:text-right">
-              <p className="text-sm text-gray-500">
+              <p className="text-sm text-[#77746F]">
                 © {new Date().getFullYear()} SANKHYA AI. An SIH 2026 prototype.
               </p>
-              <p className="text-xs text-gray-400 mt-1">
+              <p className="text-xs text-[#8D837A] mt-1">
                 Problem Statement 26101 — AI-enabled Skill Intelligence Platform
               </p>
             </div>

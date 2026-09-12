@@ -37,7 +37,7 @@ export function AITutorClient({ conversations }: { conversations: any[] }) {
           {/* Context */}
           <Card className="mb-4">
             <CardContent className="p-4">
-              <div className="flex items-center gap-4 text-xs text-gray-500">
+              <div className="flex items-center gap-4 text-xs text-[#77746F]">
                 <span>Role: Senior Statistical Officer</span>
                 <span>·</span>
                 <span>Top Gap: AI/ML (CRITICAL)</span>
@@ -53,21 +53,21 @@ export function AITutorClient({ conversations }: { conversations: any[] }) {
               {messages.map((msg) => (
                 <div key={msg.id} className={`flex gap-3 ${msg.role === "user" ? "justify-end" : ""}`}>
                   {msg.role === "assistant" && (
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-primary/10 flex-shrink-0">
-                      <Bot className="h-4 w-4 text-primary" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#080D2B]/10 flex-shrink-0">
+                      <Bot className="h-4 w-4 text-[#080D2B]" />
                     </div>
                   )}
-                  <div className={`max-w-[80%] p-3 rounded-lg text-sm ${msg.role === "user" ? "bg-primary text-white" : "bg-gray-100 text-gray-900"}`}>
+                  <div className={`max-w-[80%] p-3 rounded-lg text-sm ${msg.role === "user" ? "bg-[#080D2B] text-white" : "bg-[#F7F6F3] text-[#080D2B]"}`}>
                     <p className="whitespace-pre-wrap">{msg.content}</p>
                     {msg.sources && (
-                      <div className="mt-2 pt-2 border-t border-gray-200 text-xs text-gray-500">
+                      <div className="mt-2 pt-2 border-t border-[#DDDAD4] text-xs text-[#77746F]">
                         {msg.sources.map((s: any, i: number) => <p key={i}>Source: {s.title}, p.{s.page}</p>)}
                       </div>
                     )}
                   </div>
                   {msg.role === "user" && (
-                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-gray-200 flex-shrink-0">
-                      <User className="h-4 w-4 text-gray-600" />
+                    <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#DDDAD4] flex-shrink-0">
+                      <User className="h-4 w-4 text-[#77746F]" />
                     </div>
                   )}
                 </div>
@@ -83,7 +83,7 @@ export function AITutorClient({ conversations }: { conversations: any[] }) {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === "Enter" && handleSend()}
               placeholder="Ask a question..."
-              className="flex-1 rounded-lg border border-gray-300 px-4 py-2 text-sm focus:border-primary focus:outline-none focus:ring-1 focus:ring-primary"
+              className="flex-1 rounded-lg border border-[#8D837A] px-4 py-2 text-sm focus:border-[#080D2B] focus:outline-none focus:ring-1 focus:ring-[#080D2B]"
             />
             <Button onClick={handleSend}><Send className="h-4 w-4" /></Button>
           </div>
@@ -93,10 +93,10 @@ export function AITutorClient({ conversations }: { conversations: any[] }) {
         <div>
           <Card>
             <CardContent className="p-4">
-              <h3 className="text-sm font-semibold text-gray-900 mb-3">Suggested Questions</h3>
+              <h3 className="text-sm font-semibold text-[#080D2B] mb-3">Suggested Questions</h3>
               <div className="space-y-2">
                 {suggestedPrompts.map((p) => (
-                  <button key={p} onClick={() => setInput(p)} className="w-full text-left p-2 text-xs text-gray-600 hover:bg-gray-50 rounded border border-gray-100 transition-colors">
+                  <button key={p} onClick={() => setInput(p)} className="w-full text-left p-2 text-xs text-[#77746F] hover:bg-[#FCFBF8] rounded border border-[#DDDAD4] transition-colors">
                     {p}
                   </button>
                 ))}

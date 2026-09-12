@@ -31,10 +31,10 @@ export default function TrainerDashboardPage() {
           <CardContent>
             <div className="space-y-3">
               {[{ name: "Sampling Methods Guide.pdf", status: "Ready", questions: 45 }, { name: "Data Analysis Handbook.pdf", status: "Processing", questions: 0 }, { name: "Python Tutorial.pptx", status: "Ready", questions: 32 }].map((f) => (
-                <div key={f.name} className="flex items-center justify-between py-2 border-b border-gray-100 last:border-0">
+                <div key={f.name} className="flex items-center justify-between py-2 border-b border-[#DDDAD4] last:border-0">
                   <div>
-                    <p className="text-sm font-medium text-gray-900">{f.name}</p>
-                    <p className="text-xs text-gray-500">{f.questions} questions generated</p>
+                    <p className="text-sm font-medium text-[#080D2B]">{f.name}</p>
+                    <p className="text-xs text-[#77746F]">{f.questions} questions generated</p>
                   </div>
                   <Badge variant={f.status === "Ready" ? "success" : "secondary"}>{f.status}</Badge>
                 </div>
@@ -53,8 +53,8 @@ export default function TrainerDashboardPage() {
           <CardContent>
             <div className="space-y-3">
               {[{ q: "What is stratified sampling?", comp: "Survey Design", diff: "Medium" }, { q: "Explain SQL JOIN types", comp: "SQL", diff: "Easy" }, { q: "When to use R vs Python?", comp: "Programming", diff: "Hard" }].map((q, i) => (
-                <div key={i} className="py-2 border-b border-gray-100 last:border-0">
-                  <p className="text-sm font-medium text-gray-900">{q.q}</p>
+                <div key={i} className="py-2 border-b border-[#DDDAD4] last:border-0">
+                  <p className="text-sm font-medium text-[#080D2B]">{q.q}</p>
                   <div className="flex items-center gap-2 mt-1">
                     <Badge variant="secondary">{q.comp}</Badge>
                     <Badge variant="outline">{q.diff}</Badge>
