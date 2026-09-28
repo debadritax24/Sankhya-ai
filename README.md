@@ -107,7 +107,7 @@ Add to `.env`:
 # Frontend (Clerk)
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_test_...
 CLERK_SECRET_KEY=sk_test_...
-NEXT_PUBLIC_API_URL=http://localhost:8000
+NEXT_PUBLIC_API_URL=http://localhost:7000
 
 # Backend
 DATABASE_URL=postgresql+asyncpg://user:pass@your-neon-host/neondb
@@ -129,12 +129,12 @@ python seed.py             # Populates competency framework, courses
 # Terminal 1 — Frontend (port 3000)
 npm run dev
 
-# Terminal 2 — Backend (port 8000)
+# Terminal 2 — Backend (port 7000)
 cd backend && source venv/bin/activate
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
+uvicorn app.main:app --reload --host 0.0.0.0 --port 7000
 ```
 
-API documentation available at `http://localhost:8000/docs`.
+API documentation available at `http://localhost:7000/docs`.
 
 ---
 

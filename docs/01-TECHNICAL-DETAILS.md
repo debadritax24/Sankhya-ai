@@ -1111,7 +1111,7 @@ log.info("competency.scored",
 ```yaml
 services:
   frontend:  # Next.js — port 3000
-  api:       # FastAPI — port 8000
+  api:       # FastAPI — port 7000
   worker:    # ARQ background workers
   postgres:  # pgvector/pgvector:pg16
   redis:     # redis:7-alpine

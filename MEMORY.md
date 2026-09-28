@@ -194,7 +194,7 @@ cd backend
 source venv/bin/activate
 python run_migration.py     # Create tables on Neon
 python seed.py              # Populate seed data
-uvicorn app.main:app --reload --host 0.0.0.0 --port 8000  # Start server
+uvicorn app.main:app --reload --host 0.0.0.0 --port 7000  # Start server
 ```
 
 ---

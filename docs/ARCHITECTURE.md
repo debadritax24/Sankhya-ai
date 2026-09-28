@@ -2750,7 +2750,7 @@ WHAT I SHOULD REMEMBER:
 ┌──────────────┐     ┌──────────────┐     ┌──────────────┐
 │   Frontend   │     │   Backend    │     │   Worker     │
 │  (Next.js)   │     │  (FastAPI)   │     │  (Celery)    │
-│   Port 3000  │     │   Port 8000  │     │              │
+│   Port 3000  │     │   Port 7000  │     │              │
 └──────────────┘     └──────────────┘     └──────────────┘
         │                   │                   │
         └───────────────────┼───────────────────┘
@@ -2780,14 +2780,14 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - NEXT_PUBLIC_API_URL=http://localhost:8000
+      - NEXT_PUBLIC_API_URL=http://localhost:7000
     depends_on:
       - backend
 
   backend:
     build: ./backend
     ports:
-      - "8000:8000"
+      - "7000:7000"
     environment:
       - DATABASE_URL=postgresql://user:pass@postgres:5432/sankhya
       - REDIS_URL=redis://redis:6379
@@ -3084,7 +3084,7 @@ You need the foundation before building features.
 ```bash
 docker-compose up -d
 # Frontend: http://localhost:3000
-# Backend: http://localhost:8000/docs
+# Backend: http://localhost:7000/docs
 ```
 
 **Expected output:**
@@ -3122,12 +3122,12 @@ Security is foundational — all features depend on it.
 **How to test:**
 ```bash
 # Register
-curl -X POST http://localhost:8000/auth/register \
+curl -X POST http://localhost:7000/auth/register \
   -H "Content-Type: application/json" \
   -d '{"email": "test@gov.in", "password": "pass123"}'
 
 # Login
-curl -X POST http://localhost:8000/auth/login \
+curl -X POST http://localhost:7000/auth/login \
   -H "Content-Type: application/json" \
   -d '{"email": "test@gov.in", "password": "pass123"}'
 ```
@@ -3191,7 +3191,7 @@ Core feature — everything else depends on this.
 
 **How to test:**
 ```bash
-curl http://localhost:8000/competencies/framework
+curl http://localhost:7000/competencies/framework
 ```
 
 **Expected output:**
@@ -3219,7 +3219,7 @@ Gap detection drives recommendations.
 
 **How to test:**
 ```bash
-curl http://localhost:8000/competencies/my-gaps
+curl http://localhost:7000/competencies/my-gaps
 ```
 
 **Expected output:**
@@ -3249,7 +3249,7 @@ Recommendations use gap data and course catalog.
 
 **How to test:**
 ```bash
-curl http://localhost:8000/recommendations/my-learning-path
+curl http://localhost:7000/recommendations/my-learning-path
 ```
 
 **Expected output:**
@@ -3283,7 +3283,7 @@ RAG enables AI assessment and tutor features.
 
 **How to test:**
 ```bash
-curl -X POST http://localhost:8000/ai/process-document \
+curl -X POST http://localhost:7000/ai/process-document \
   -F "file=@sampling_methods.pdf"
 ```
 
@@ -3318,7 +3318,7 @@ Depends on RAG pipeline being complete.
 
 **How to test:**
 ```bash
-curl -X POST http://localhost:8000/assessments/generate \
+curl -X POST http://localhost:7000/assessments/generate \
   -H "Content-Type: application/json" \
   -d '{"document_id": 1, "num_questions": 5}'
 ```
@@ -3352,7 +3352,7 @@ External integration is secondary to core features.
 
 **How to test:**
 ```bash
-curl http://localhost:8000/integrations/igot/courses
+curl http://localhost:7000/integrations/igot/courses
 ```
 
 **Expected output:**

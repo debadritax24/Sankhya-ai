@@ -381,7 +381,7 @@ Docker for all services. Docker Compose for local development and hackathon demo
 ```yaml
 services:
   frontend:    # Next.js — 3000:3000
-  api:         # FastAPI — 8000:8000, env vars, depends_on postgres+redis
+  api:         # FastAPI — 7000:7000, env vars, depends_on postgres+redis
   worker:      # Same image as api, command: arq workers.WorkerSettings
   postgres:    # pgvector/pgvector:pg16, persistent volume
   redis:       # redis:7-alpine
